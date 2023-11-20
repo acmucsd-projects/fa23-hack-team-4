@@ -7,8 +7,8 @@ const userSchema = new Schema({
     password: {type: String, required: true},
     name: {type: String, required: true},
     date_of_registration: {type: Date, default: Date.now}, 
-    saved_posts: [{type: Schema.Types.ObjectId, ref: 'Post', }], required: true, 
-    created_posts: [{type: Schema.Types.ObjectId, ref: 'Post', }], required: true,      
+    saved_posts: {type: [Schema.Types.ObjectId], ref: 'Post', required: true}, 
+    created_posts: {type: [Schema.Types.ObjectId], ref: 'Post', required: true},      
     contact_method: {type: [String], required: true},
 });
 
