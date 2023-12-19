@@ -3,7 +3,8 @@
 }
 
 .logo {
-  
+  width: 30vw;
+  height: 10vw;
 }
 
 /* Enable hover only on non-touch devices */
