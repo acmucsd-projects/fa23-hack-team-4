@@ -1,13 +1,8 @@
 const express = require('express');
 const router = express.Router();
 
-/* GET users listing. */
-router.get('/', function(req, res, next) {
-  const user = {
-    name: 'ACM Hack',
-    email: 'hack@acmucsd.org'
-  }
-  res.status(200).json({ user });
-});
+const user_controller = require('../controllers/userController');
+
+router.get('/:username', user_controller.user_detail);
 
 module.exports = router;
