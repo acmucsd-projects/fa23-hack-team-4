@@ -1,96 +1,72 @@
 import Image from 'next/image'
+import { inter } from 'next/font/google'
 import styles from './page.module.css'
 
 export default function Home() {
+
+  const backgroundImage = '/images/geisel-free-background.jpeg'
+
   return (
     <main className={styles.main}>
-      <div className={styles.description}>
-        <p> 
-          hello...... Get started by editing&nbsp;
-          hello 2
-          <code className={styles.code}>src/app/page.js</code>
-        </p> 
-        <div>
-          <a
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          > 
-            By{' '}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className={styles.vercelLogo}
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
-        </div> 
-      </div>
-
-      <div className={styles.center}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
-
-      <div className={styles.grid}>
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Docs <span>-&gt;</span>
-          </h2>
-          <p>Hi. Find in-depth information about Next.js features and ???.</p>
-        </a>
-
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Learn <span>-&gt;</span>
-          </h2>
-          <p>Learn about Next.js in an interactive course with&nbsp;quizzes!</p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer" 
-        >
-          <h2>
-            Templates <span>-&gt;</span>
-          </h2>
-          <p>Explore the Next.js 13 playground.</p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Deploy <span>-&gt;</span>
-          </h2>
-          <p>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div> 
+      <Image 
+        className={styles.backgroundImage}
+        src={backgroundImage}
+        alt='Geisel Scenery'
+        layout='fill'
+        objectFit='cover'
+        objectPosition='center'
+      />
+      <Header />
+      <Account />
     </main>
+  )
+}
+
+
+function Header() {
+
+  const logo = '/images/TM-logo.png';
+
+  return (
+    <div className={styles.header}>
+      <Image 
+        src={logo}
+        style={{
+          width: '20vw',
+          height: '20vw'
+        }}
+        width={960}
+        height={240}
+        alt='Triton Marketplace Free and For Sale'
+        priority
+      />
+      <div className={styles.title}>
+        <h1>Triton Marketplace</h1>
+        <h2>UCSD Free and For Sale</h2>
+      </div>
+    </div>
+  )
+}
+
+function Account() {
+  return (
+    <div className={styles.account}>
+      <div className={styles.login}>
+        <div className={styles.loginPrompt}>
+          <h2>Welcome back!</h2>
+          <h1>Login for the goods:</h1><br />
+          <form className={styles.loginForm}>
+            <label for='username'>Username (before @ucsd.edu)</label><br />
+            <input type='text' id='username' name='username' placeholder='Username' /><br /><br />
+            <label for='password'>Password</label><br />
+            <input type='password' id='password' name='password' placeholder='Password' /><br /><br/>
+            <input type='submit' value='Submit' />
+          </form>
+        </div>
+      </div>
+      <div className={styles.signUp}>
+
+      </div>
+    </div>
   )
 }
