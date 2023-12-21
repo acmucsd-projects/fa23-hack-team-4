@@ -53,13 +53,17 @@
       display: flex;
       flex-direction: row;
       flex-wrap: wrap;
+      justify-content: right;
 
       width: 60vw;
       height: 45vh;
       margin: 0vh 20vw 0vh;
 
-      border-radius: 120px 30px;
       background-color: #F5F0E6e1;
+    }
+
+    .account[islogin='false'] {
+      flex-direction: row-reverse;
     }
 
     .account input {
@@ -83,39 +87,16 @@
       font-size: 1.3vw;
     }
 
-      .login {
-        width: 38vw;
-        height: inherit;
-      }
-
-        .loginPrompt {
-          display: flex;
-          flex-direction: column;
-          justify-content: center;
-
-          height: 35vh;
-          margin: 5vh 6vw;
-        }
-
-          .loginPrompt h1 {
-            font-weight: 400;
-            font-size: 2.5vw;
-          }
-
-          .loginPrompt h2 {
-            font-weight: 700;
-            font-size: 1.75vw;
-          }
-
-      .signUp {
+      .highlighted {
         width: 22vw;
         height: inherit;
 
-        border-radius: 3px 30px 120px 3px;
         background-color: #FC8900d1;
+
+        z-index: 1;
       }
 
-        .signUpPrompt {
+        .highlightedPrompt {
           display: flex;
           flex-direction: column;
           justify-content: center;
@@ -124,14 +105,38 @@
           margin: 5vh 3vw;
         }
 
-          .signUpPrompt h1{
+          .highlightedPrompt h1{
             font-weight: 700;
             font-size: 2.5vw;
           }
 
-          .signUpPrompt h2{
+          .highlightedPrompt h2{
             font-weight: 350;
             font-size: 1.45vw;
+          }
+
+      .expanded {
+        width: 38vw;
+        height: inherit;
+      }
+
+        .expandedPrompt {
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+
+          height: 35vh;
+          margin: 5vh 6vw;
+        }
+
+          .expandedPrompt h1 {
+            font-weight: 400;
+            font-size: 2.5vw;
+          }
+
+          .expandedPrompt h2 {
+            font-weight: 700;
+            font-size: 1.75vw;
           }
 
 /* Tablet and Smaller Desktop */
