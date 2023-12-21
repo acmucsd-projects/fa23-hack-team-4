@@ -6,89 +6,141 @@
   z-index: -1;
 }
 
-.header {
-  display: flex;
+  .header {
+    height: 40vh;
 
-  width: 80vw;
-  margin: 0vw 10vw; 
-  padding: 4vw 0vw;
-}
+    padding: 5vh 0vw;
+  }
 
-.title {
-  width: 60vw;
-  padding: 3vw 0vw;
+    .title {
+      display: flex;
 
-  line-height: 6vw;
-}
+      width: 80vw;
+      height: 35vh;
+      margin: 0vh 10vw;
+    }
 
-.title h1 {
-  font-size: 5.5vw;
-  font-weight: 800;
-}
+      /* 
+      title logo (js inline):
+      width: 20vw
+      height: 20vw
+      */
 
-.title h2 {
-  font-size: 4vw;
-  font-weight: 500;
-}
+      .name {
+        width: 60vw;
+        padding: 3vw 0vw;
 
-.account {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
+        line-height: 6vw;
+      }
 
-  width: 70vw;
-  height: 40vh;
-  margin: 0vh 15vw;
+        .name h1 {
+          font-size: 5.75vw;
+          font-weight: 700;
+        }
 
-  border-radius: 30px 120px 30px 120px;
-  background-color: #F5F0E6e1;
-}
+        .name h2 {
+          font-size: 4.5vw;
+          font-weight: 450;
+        }
 
-.login {
-  width: 60%;
-  height: 100%;
-}
+  .body {
+    height: 60vh;
 
-.loginPrompt {
-  padding: 5% 15%;
-}
+    padding: 2.5vh 0vw 12.5vh;
+  }
 
-.loginPrompt h1 {
-  font-weight: 400;
-}
+    .account {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
 
-.loginPrompt h2 {
-  font-weight: 700;
-}
+      width: 60vw;
+      height: 45vh;
+      margin: 0vh 20vw 0vh;
 
-.loginForm {
-  
-}
+      border-radius: 120px 30px;
+      background-color: #F5F0E6e1;
+    }
 
-.signUp {
-  width: 40%;
-  height: 100%;
+    .account input {
+      width: 100%;
+      height: 4vh;
 
-  border-radius: 3px 120px 30px 3px;
-  background-color: #FC8900d1;
-}
+      margin: 0.5vh 0vw;
+      padding: 4px;
+    }
 
-.signUpPrompt {
+    .account input[type=text]:focus, .account input[type=password]:focus {
+      outline-style: none;
+      border: 2px solid #FFCD00;
+    }
 
-}
+    .account input[type=submit], .account input[type=button] {
+      background-color: #00629B;
+      border: none;
+      color: white;
+      cursor: pointer;
+      font-size: 1.3vw;
+    }
 
-/* Enable hover only on non-touch devices */
-@media (hover: hover) and (pointer: fine) {
+      .login {
+        width: 38vw;
+        height: inherit;
+      }
+
+        .loginPrompt {
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+
+          height: 35vh;
+          margin: 5vh 6vw;
+        }
+
+          .loginPrompt h1 {
+            font-weight: 400;
+            font-size: 2.5vw;
+          }
+
+          .loginPrompt h2 {
+            font-weight: 700;
+            font-size: 1.75vw;
+          }
+
+      .signUp {
+        width: 22vw;
+        height: inherit;
+
+        border-radius: 3px 30px 120px 3px;
+        background-color: #FC8900d1;
+      }
+
+        .signUpPrompt {
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+
+          height: 35vh;
+          margin: 5vh 3vw;
+        }
+
+          .signUpPrompt h1{
+            font-weight: 700;
+            font-size: 2.5vw;
+          }
+
+          .signUpPrompt h2{
+            font-weight: 350;
+            font-size: 1.45vw;
+          }
+
+/* Tablet and Smaller Desktop */
+@media (min-width: 701px) and (max-width: 1120px) {
   
 }
 
 /* Mobile */
 @media (max-width: 700px) {
-  
-}
-
-/* Tablet and Smaller Desktop */
-@media (min-width: 701px) and (max-width: 1120px) {
   
 }
 
