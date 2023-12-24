@@ -62,9 +62,11 @@
       background-color: #F5F0E6e1;
     }
 
+    /*
     .account[islogin='false'] {
       flex-direction: row-reverse;
     }
+    */
 
     .account input {
       width: 100%;
@@ -87,7 +89,7 @@
       font-size: 1.3vw;
     }
 
-      .highlighted {
+      .signUp {
         width: 22vw;
         height: inherit;
 
@@ -96,48 +98,62 @@
         z-index: 1;
       }
 
-        .highlightedPrompt {
-          display: flex;
-          flex-direction: column;
-          justify-content: center;
+      .signUp[isLogin='false'] {
+        width: 38vw;
+      }
 
-          height: 35vh;
-          margin: 5vh 3vw;
-        }
-
-          .highlightedPrompt h1{
-            font-weight: 700;
-            font-size: 2.5vw;
-          }
-
-          .highlightedPrompt h2{
-            font-weight: 350;
-            font-size: 1.45vw;
-          }
-
-      .expanded {
+      .login {
         width: 38vw;
         height: inherit;
       }
 
-        .expandedPrompt {
-          display: flex;
-          flex-direction: column;
-          justify-content: center;
+      .login[isLogin='false'] {
+        width: 22vw;
+      }
 
-          height: 35vh;
-          margin: 5vh 6vw;
+      .condensedPrompt {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+
+        height: 35vh;
+        margin: 5vh 3vw;
+      }
+
+        .condensedPrompt h1{
+          font-weight: 700;
+          font-size: 2.5vw;
         }
 
-          .expandedPrompt h1 {
-            font-weight: 400;
-            font-size: 2.5vw;
-          }
+        .condensedPrompt h2{
+          font-weight: 350;
+          font-size: 1.45vw;
+        }
 
-          .expandedPrompt h2 {
-            font-weight: 700;
-            font-size: 1.75vw;
-          }
+      .expandedPrompt {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+
+        height: 35vh;
+        margin: 5vh 6vw;
+      }
+
+        .expandedPrompt h1 {
+          font-weight: 400;
+          font-size: 2.5vw;
+        }
+
+        .expandedPrompt h2 {
+          font-weight: 700;
+          font-size: 1.75vw;
+        }
+
+        .expandedPrompt h3 {
+          font-weight: 500;
+          font-size: 1.3vw;
+        }
+
 
 /* Tablet and Smaller Desktop */
 @media (min-width: 701px) and (max-width: 1120px) {
