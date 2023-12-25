@@ -1,24 +1,38 @@
-# 💻 MERN stack template
+# 🔱 🛒 Triton Marketplace
 
-Template for building projects with the MERN (MongoDB, Express, React, Node.js) stack.
-This template was generated using `create-next-app` and `express-generator` for the
-client and server, respectively.
+Using the MERN (MongoDB, Express, React, Node.js) stack, we are building a project that unifies UCSD students under an easy to access, safe e-commerce experience for sale and purchase of free and for sale goods (Much like Facebook Marketplace's UCSD Free and For Sale community)
 
-## Prerequisites
+## Goals 
 
-- Install Node and npm [here](https://nodejs.org/en/download/)
-- Install `yarn` with the command `npm install -g yarn`
-- Set up a [MongoDB Atlas](https://www.mongodb.com/) instance. See [this video](https://www.youtube.com/watch?v=CcOL5h_ZFJM) for help!
-- Create a `.env` file with a variable called `DB_URL` and paste your MongoDB url:
+We want to build a platform where UCSD students can safely and reliably sell and purchase used goods online. Being a platform for exclusively the UCSD community allows for more common interests and useful items for specifcally UCSD. No more outdated, ghost posts. No more being worried for safety. No more scams. 
 
-```bash
-DB_URL=mongodb://mongodburl.example.com:portnumber
-```
+## Technologies
 
-## Running
+**Mern Stack**
+1. MongoDB
+2. Express
+3. React
+4. Node.js
 
-1. `cd` into `client` and run the command `yarn install` to install all dependencies
-2. To start the client, run `yarn dev` in the same directory
-3. In another command window, `cd` into `server` and run `yarn install` and `yarn start`
-   to install all dependencies and start the server.
-4. Happy hacking!
+**Front-End Client Side Libraries**
+1. Framer Motion
+2. Bootstrap
+
+**Back-End APIs**
+1. Google API
+
+## Team
+
+**Project Lead, Front-End**
+Samuel Eun
+
+**Scrummaster, Back-End**
+Angie Nguyen
+
+**Front-End**
+Kiruthika Marikumaran
+Apnam Sandhu
+
+**Back-End**
+Pranav Bussannagari
+May Hong
