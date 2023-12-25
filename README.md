@@ -23,16 +23,22 @@ We want to build a platform where UCSD students can safely and reliably sell and
 
 ## Team
 
-**Project Lead, Front-End**
+**Project Lead, Front-End:**
+
 Samuel Eun
 
-**Scrummaster, Back-End**
+**Scrummaster, Back-End:**
+
 Angie Nguyen
 
-**Front-End**
+**Front-End:**
+
 Kiruthika Marikumaran
+
 Apnam Sandhu
 
-**Back-End**
+**Back-End:**
+
 Pranav Bussannagari
+
 May Hong
