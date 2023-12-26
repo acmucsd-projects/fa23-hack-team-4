@@ -1,4 +1,4 @@
-# 🔱 🛒 Triton Marketplace
+# ![🔱 🛒](/client/public/images/TM-logo.png) Triton Marketplace
 
 Using the MERN (MongoDB, Express, React, Node.js) stack, we are building a project that unifies UCSD students under an easy to access, safe e-commerce experience for sale and purchase of free and for sale goods (Much like Facebook Marketplace's UCSD Free and For Sale community)
 
