@@ -37,11 +37,6 @@
     vertical-align: middle;
   }
 
-  .testLink {
-    position: absolute;
-    top: 95%;
-  }
-
   .images {
     position: relative; 
     z-index: -1;
@@ -66,6 +61,7 @@
     font-size: .5vw;
     cursor: pointer;
     background-color: rgb(255, 255, 255);
+    position: relative;
     margin-left: 10px; 
     padding: .2vw;
   }

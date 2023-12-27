@@ -4,7 +4,6 @@ import 'bootstrap/dist/css/bootstrap.css'
 import styles from './page.module.css'
 import {useEffect} from 'react'
 import React, { useState } from 'react';
-import 'flatifycss/dist/css/flatify.css'
 
 
 export default function PostTemplate(){
@@ -68,7 +67,7 @@ function Information(){
 
 function ImageSlide(){
 
-    const images = ["/images/geisel-free-background.jpeg", "/images/TM-logo.png", "/images/Black_color.jpeg"];
+    const images = ["/images/geisel-free-background.jpeg", "images/black.jpeg"];
     const [x, setx] = useState(0);
     
     const handlePrevious = () => {
@@ -90,7 +89,7 @@ function ImageSlide(){
             <div className = {styles.buttonSet}>
                 <div class="btn-group" role="group" aria-label="Basic example" >
                     <button onClick = {handlePrevious} type="button" class="button arrow-button arrow-left style-light color-dark" >Prev</button>
-                    <button onClick = {handleNext} type="button" class="button arrow-button arrow-right style-light color-dark "  >Next</button>
+                    <button onClick = {handleNext} type="button" class="button arrow-button arrow-right style-light color-dark"  >Next</button>
                 </div>
             </div>
 
