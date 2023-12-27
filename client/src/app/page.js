@@ -1,6 +1,6 @@
 "use client"
 import Image from 'next/image'
-import styles from './page.module.css'
+import styles from './css/page.module.css'
 import { motion, AnimatePresence } from 'framer-motion'
 import { useState } from 'react'
 
