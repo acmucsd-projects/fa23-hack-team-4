@@ -1,5 +1,6 @@
 const { body, validationResult } = require("express-validator");
 const User = require('../models/user');
+
 const Post = require('../models/post');
 
 // Viewing your own profile
@@ -29,3 +30,7 @@ exports.viewProfile = async (req, res) => {
     res.status(500).send('Internal Server Error');
   }
 };
+
+exports.user_detail = (req, res) => {
+    res.send('User with a username of ' + req.params.username);
+}

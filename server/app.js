@@ -10,6 +10,7 @@ const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
 const postsRouter = require('./routes/posts');
 const hubRouter = require('./routes/hub');
+
 const authRouter = require('./routes/auth');
 
 const app = express();
@@ -17,6 +18,7 @@ const app = express();
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
+
 
 app.use(expressSession({
   secret: '138u4013s',
