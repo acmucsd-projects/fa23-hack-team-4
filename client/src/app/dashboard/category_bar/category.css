@@ -1,0 +1,67 @@
+.main {
+    height: 100vh;
+  }
+  
+  .categories {
+    display: flex;
+    justify-content: space-evenly;
+    background-color: #f0f0f0; /* Very light grey background */
+    padding: 10px; /* Adjust as needed */
+  }
+  
+  .categoryItem {
+    margin-right: 15%; /* Adjust spacing between categories */
+    position: relative;
+    cursor: pointer;
+  }
+  
+  .categoryName {
+    color: #001f3f; /* Navy blue text color */
+    font-weight: bold;
+    white-space: nowrap;
+  }
+  
+  .subcategories {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    display: flex;
+    background-color: #f0f0f0; /* Very light grey background for subcategories */
+    flex-direction: column;
+    padding: 10px;
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 0s, opacity 0.2s ease-in-out;
+    white-space: nowrap;
+  }
+  
+  .categoryItem:hover .subcategories {
+    visibility: visible;
+    opacity: 1;
+  }
+  
+  .subcategories > div {
+    margin-bottom: 10px; /* Adjust spacing between subcategories */
+  }
+  
+  .subcategories > div:first-child {
+    text-decoration: underline; /* Apply underline to the first subcategory */
+  }
+  
+  
+  /* Tablet and Smaller Desktop */
+  @media (min-width: 701px) and (max-width: 1120px) {
+    
+  }
+  
+  /* Mobile */
+  @media (max-width: 700px) {
+    
+  }
+  
+  @media (prefers-color-scheme: dark) {
+    
+  }
+  
+  
+  
