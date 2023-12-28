@@ -1,5 +1,13 @@
 :root {
-  background-color: #F5F0E6;
+  --navy: #182B49;
+  --blue: #00629B;
+  --yellow: #FFCD00;
+  --gold: #C69214;
+  --sand: #F5F0E6;
+  --sandRGB: 245, 240, 230;
+  --orangeRGB: 252, 137, 0;
+
+  background-color: var(--sand);
 }
 
 @media (prefers-color-scheme: dark) {

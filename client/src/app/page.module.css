@@ -59,7 +59,8 @@
       height: 45vh;
       margin: 0vh 20vw 0vh;
 
-      background-color: #F5F0E6e1;
+      /* background-color: #F5F0E6e1; /* var(--sand)+e1 */
+      background-color: rgba(var(--sandRGB), 0.9);
     }
 
     /*
@@ -76,13 +77,17 @@
       padding: 4px;
     }
 
+    .account input[type=text], .account input[type=password] {
+      border: none;
+      outline: 1px solid;
+    }
+
     .account input[type=text]:focus, .account input[type=password]:focus {
-      outline-style: none;
-      border: 2px solid #FFCD00;
+      outline: 2px solid var(--yellow);
     }
 
     .account input[type=submit], .account input[type=button] {
-      background-color: #00629B;
+      background-color: var(--blue);
       border: none;
       color: white;
       cursor: pointer;
@@ -93,7 +98,7 @@
         width: 22vw;
         height: inherit;
 
-        background-color: #FC8900d1;
+        background-color: rgba(var(--orangeRGB), 0.9);
 
         z-index: 1;
       }

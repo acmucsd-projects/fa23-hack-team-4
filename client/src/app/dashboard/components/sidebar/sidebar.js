@@ -1,7 +1,7 @@
 "use client"
 
 import 'bootstrap/dist/css/bootstrap.css'
-import stuff from './page.moduleSBT.css'
+import stuff from './page.module.css'
 import {useEffect} from 'react'
 
 export default function sideBar() {

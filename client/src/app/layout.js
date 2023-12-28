@@ -1,4 +1,4 @@
-import './css/globals.css'
+import './globals.css'
 import { Fraunces } from 'next/font/google'
 
 const fraunces = Fraunces({ subsets: ['latin'] })
