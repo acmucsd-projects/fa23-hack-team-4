@@ -1,0 +1,15 @@
+.main {
+    height: 100vh;
+  }
+  
+  .backgroundImage {
+    z-index: -1;
+  }
+  
+  .header {
+    display: flex;
+  
+    width: 80vw;
+    margin: 0vw 10vw; 
+    padding: 4vw 0vw;
+  }
