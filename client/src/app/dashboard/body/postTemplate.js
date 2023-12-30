@@ -1,7 +1,7 @@
 "use client"
 import Image from 'next/image'
 import 'bootstrap/dist/css/bootstrap.css'
-import styles from './page.module.css'
+import styles from './postTemplate.css'
 import {useEffect} from 'react'
 import React, { useState } from 'react';
 
@@ -67,7 +67,7 @@ function Information(){
 
 function ImageSlide(){
 
-    const images = ["/images/geisel-free-background.jpeg", "images/black.jpeg"];
+    const images = ["/images/geisel-free-background.jpeg", "/images/black.jpeg"];
     const [x, setx] = useState(0);
     
     const handlePrevious = () => {
