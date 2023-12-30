@@ -10,7 +10,8 @@ const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
 const postsRouter = require('./routes/posts');
 const hubRouter = require('./routes/hub');
-
+const offersRouter = require('./routes/offers');
+const productsRouter = require('./routes/products');
 const authRouter = require('./routes/auth');
 
 const app = express();
@@ -41,6 +42,8 @@ app.use('/users', usersRouter);
 app.use('/posts', postsRouter);
 app.use('/hub', hubRouter);
 app.use('/auth', hubRouter);
+app.use('/offers', offersRouter);
+app.use('/products', productsRouter);
 
 dotenv.config();
 
