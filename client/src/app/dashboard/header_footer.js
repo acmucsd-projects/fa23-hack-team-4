@@ -1,16 +1,25 @@
 import Image from 'next/image'
+import styles from './layout.module.css'
 
-export default function Footer() {
+export function Header() {
+    return (
+        <section className={styles.header}>
+            Header
+        </section>
+    )
+}
+
+export function Footer() {
 
     const logo = '/images/TM-logo.png';
 
     return (
-        <section>
+        <section className={styles.footer}>
             <Image 
                 src={logo}
                 style={{
-                width: '20vw',
-                height: '20vw'
+                width: '9vh',
+                height: '9vh'
                 }}
                 width={960}
                 height={240}
