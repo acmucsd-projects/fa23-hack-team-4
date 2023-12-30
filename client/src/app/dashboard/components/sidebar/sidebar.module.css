@@ -1,0 +1,27 @@
+.sidebar {
+    min-height: 70vh;
+    width: 20vw;
+
+    border: 3px solid var(--yellow);
+    border-left: none;
+    border-bottom-right-radius: 40px;
+
+    background-color: var(--blue);
+}
+
+.title {
+  padding: 1vw;
+
+  border-bottom: 2px solid var(--gold);
+  border-radius: 0px 0px 20px 20px;
+
+  background-color: rgba(var(--sand), 0.95);
+}
+
+.title h1 {
+  font-size: 2.25vw;
+}
+
+.title h2 {
+  font-size: 1.3vw;
+}

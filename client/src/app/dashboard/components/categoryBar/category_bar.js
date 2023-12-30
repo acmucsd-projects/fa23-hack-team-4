@@ -1,10 +1,12 @@
-function Categories() {
+import styles from './category_bar.module.css'
+
+export default function Category() {
     const categories = [
       { name: 'Clothing', subcategories: ['View all', 'T-Shirts', 'Hoodies & Sweatshirts', 'Tops', 'Pants & Shorts', 'Hats', 'Other'] },
       { name: 'Home', subcategories: ['View all', 'Furniture', 'Room Decor', 'Kitchenware'] },
       { name: 'Entertainment', subcategories: ['View All', 'Books', 'Sporting Goods', 'Games', 'Other'] },
       { name: 'School Supplies', subcategories: ['View all', 'Writing Utensils', 'Notebooks', 'Textbooks', 'Lab Supplies'] },
-      { name: 'Miscellaneous', subcategories: ['View all', 'Drinkware', 'Backpacks & Totes'] },
+      { name: 'Miscellaneous', subcategories: ['View all', 'Drinkware', 'Backpacks & Totes'] }
     ];
   
     return (

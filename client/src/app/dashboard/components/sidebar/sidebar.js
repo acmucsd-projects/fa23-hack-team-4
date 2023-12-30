@@ -1,75 +1,39 @@
-"use client"
+import styles from './sidebar.module.css'
 
-import 'bootstrap/dist/css/bootstrap.css'
-import stuff from './page.module.css'
-import {useEffect} from 'react'
-
-export default function sideBar() {
-    useEffect(() => {
-        require("bootstrap/dist/js/bootstrap.bundle.min.js");
-      }, []);
+export default function Sidebar() {
     
     return (
-        <main className={stuff.main}>
-            <div>
-                <SideBarBoxes/>
+        <div className={styles.sidebar}>
+            <div className={styles.title}>
+                <h2>What are you looking for?</h2>
+                <h1>Filter and Sort</h1>
             </div>
-        </main>
-    )
-}
-
-function SideBarBoxes() {
-    return (
-        <div class="btn-group-vertical">
-            <div class="btn-group" role="group">
-                <button id="btnGroupDrop1" type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Price Range</button>
-
-                <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
-                    <a class="dropdown-item" href="#">Not Pricey</a>
-                    <a class="dropdown-item" href="#">Pricey</a>
+            <div className={styles.content}>
+                <div className={styles.filter}>
+                    <h1>Filters:</h1>
+                    <form className={styles.options}>
+                        <input type='checkbox' id='filterAvailable' name='available' />
+                        <label for='filterAvailable'>Available</label><br />
+                        <input type='checkbox' id='filterPending' name='pending' />
+                        <label for='filterPending'>Pending</label><br />
+                        <input type='checkbox' id='filterOnCampus' name='onCampus' />
+                        <label for='filterOnCampus'>On Campus</label><br />
+                        <input type='checkbox' id='filterUrgentlySelling' name='urgentlySelling' />
+                        <label for='filterUrgentlySelling'>Urgently Selling</label>
+                    </form>
                 </div>
-            </div>
-            
-            <div class="btn-group" role="group">
-                <button id="btnGroupDrop1" type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Verified Seller</button>
-
-                <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
-                    <a class="dropdown-item" href="#">Yes</a>
-                    <a class="dropdown-item" href="#">No</a>
-                </div>
-            </div>
-
-            <div class="btn-group" role="group">
-                <button id="btnGroupDrop1" type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Date Listed</button>
-
-                <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
-                    <a class="dropdown-item" href="#">Now</a>
-                    <a class="dropdown-item" href="#">Then</a>
-                </div>
-            </div>
-
-            <div class="btn-group" role="group">
-                <button id="btnGroupDrop1" type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Rating</button>
-
-                <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
-                    <a class="dropdown-item" href="#">0</a>
-                    <a class="dropdown-item" href="#">5</a>
-                </div>
-            </div>
-
-            <div class="btn-group" role="group">
-                <button id="btnGroupDrop1" type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Size</button>
-
-                <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
-                    <a class="dropdown-item" href="#">S</a>
-                    <a class="dropdown-item" href="#">M</a>
-                    <a class="dropdown-item" href="#">L</a>
-                    <a class="dropdown-item" href="#">XL</a>
+                <div className={styles.sort}>
+                    <h1>Sort-by:</h1>
+                    <form className={styles.options}>
+                        <input type='radio' id='sortPriceIncreasing' name='priceIncreasing' />
+                        <label for='sortPriceIncreasing'>Price (Increasing)</label><br />
+                        <input type='radio' id='sortPriceDecreasing' name='priceDecreasing' />
+                        <label for='sortPriceDecreasing'>Price (Decreasing)</label><br />
+                        <input type='radio' id='sortDatePostedNewest' name='datePostedNewest' />
+                        <label for='sortDatePostedNewest'>Date Posted (Newest)</label><br />
+                        <input type='radio' id='sortDatePostedOldest' name='datePostedOldest' />
+                        <label for='sortDatePostedOldest'>Date Posted (Oldest)</label>
+                    </form>
                 </div>
             </div>
         </div>
