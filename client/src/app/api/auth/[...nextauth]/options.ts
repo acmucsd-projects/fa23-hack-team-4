@@ -7,6 +7,7 @@ export const options: NextAuthOptions = {
         GoogleProvider({
             clientId: process.env.GOOGLE_CLIENT_ID as string,
             clientSecret: process.env.GOOGLE_CLIENT_SECRET as string,
+            authorization: 'https://accounts.google.com/o/oauth2/auth?response_type=code&hd=ucsd.edu'
         }),
     ],
     callbacks: {
