@@ -1,0 +1,177 @@
+.main {
+  height: 100vh;
+}
+
+.backgroundImage {
+  z-index: -1;
+}
+
+  .header {
+    height: 40vh;
+
+    padding: 5vh 0vw;
+  }
+
+    .title {
+      display: flex;
+
+      width: 80vw;
+      height: 35vh;
+      margin: 0vh 10vw;
+    }
+
+      /* 
+      title logo (js inline):
+      width: 20vw
+      height: 20vw
+      */
+
+      .name {
+        width: 60vw;
+        padding: 3vw 0vw;
+
+        line-height: 6vw;
+      }
+
+        .name h1 {
+          font-size: 5.75vw;
+          font-weight: 700;
+        }
+
+        .name h2 {
+          font-size: 4.5vw;
+          font-weight: 450;
+        }
+
+  .body {
+    height: 60vh;
+
+    padding: 2.5vh 0vw 12.5vh;
+  }
+
+    .account {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: right;
+
+      width: 60vw;
+      height: 45vh;
+      margin: 0vh 20vw 0vh;
+
+      /* background-color: #F5F0E6e1; /* var(--sand)+e1 */
+      background-color: rgba(var(--sandRGB), 0.9);
+    }
+
+    /*
+    .account[islogin='false'] {
+      flex-direction: row-reverse;
+    }
+    */
+
+    .account input {
+      width: 100%;
+      height: 4vh;
+
+      margin: 0.5vh 0vw;
+      padding: 4px;
+    }
+
+    .account input[type=text], .account input[type=password] {
+      border: none;
+      outline: 1px solid;
+    }
+
+    .account input[type=text]:focus, .account input[type=password]:focus {
+      outline: 2px solid var(--yellow);
+    }
+
+    .account input[type=submit], .account input[type=button] {
+      background-color: var(--blue);
+      border: none;
+      color: white;
+      cursor: pointer;
+      font-size: 1.3vw;
+    }
+
+      .signUp {
+        width: 22vw;
+        height: inherit;
+
+        background-color: rgba(var(--orangeRGB), 0.9);
+
+        z-index: 1;
+      }
+
+      .signUp[isLogin='false'] {
+        width: 38vw;
+      }
+
+      .login {
+        width: 38vw;
+        height: inherit;
+      }
+
+      .login[isLogin='false'] {
+        width: 22vw;
+      }
+
+      .condensedPrompt {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+
+        height: 35vh;
+        margin: 5vh 3vw;
+      }
+
+        .condensedPrompt h1{
+          font-weight: 700;
+          font-size: 2.5vw;
+        }
+
+        .condensedPrompt h2{
+          font-weight: 350;
+          font-size: 1.45vw;
+        }
+
+      .expandedPrompt {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+
+        height: 35vh;
+        margin: 5vh 6vw;
+      }
+
+        .expandedPrompt h1 {
+          font-weight: 400;
+          font-size: 2.5vw;
+        }
+
+        .expandedPrompt h2 {
+          font-weight: 700;
+          font-size: 1.75vw;
+        }
+
+        .expandedPrompt h3 {
+          font-weight: 500;
+          font-size: 1.3vw;
+        }
+
+
+/* Tablet and Smaller Desktop */
+@media (min-width: 701px) and (max-width: 1120px) {
+  
+}
+
+/* Mobile */
+@media (max-width: 700px) {
+  
+}
+
+@media (prefers-color-scheme: dark) {
+  
+}
+
+

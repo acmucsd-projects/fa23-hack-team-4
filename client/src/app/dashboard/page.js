@@ -1,5 +1,5 @@
 
-import PostTemplate from './body/postTemplate.js'
+import PostTemplate from './components/body/postTemplate.js'
 
 export default function Dashboard() {
     return (
