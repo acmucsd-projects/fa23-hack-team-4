@@ -3,6 +3,7 @@ import Image from 'next/image'
 import styles from './page.module.css'
 import { motion, AnimatePresence } from 'framer-motion'
 import { useState } from 'react'
+import GoogleButton from './dashboard/components/authentication/GoogleButton'
 
 export default function Home() {
 
@@ -168,6 +169,7 @@ function Account() {
             whileTap={{ scale: 0.96 }}
           />
         </form>
+        <GoogleButton></GoogleButton>
       </motion.div>
     )
   }
@@ -212,6 +214,7 @@ function Account() {
               whileTap={{ scale: 0.96 }}
             />
           </form>
+          <GoogleButton></GoogleButton>
         </motion.div>
       )
     }
