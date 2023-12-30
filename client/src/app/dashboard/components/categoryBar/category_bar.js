@@ -2,21 +2,21 @@ import styles from './category_bar.module.css'
 
 export default function Category() {
     const categories = [
-      { name: 'Clothing', subcategories: ['View all', 'T-Shirts', 'Hoodies & Sweatshirts', 'Tops', 'Pants & Shorts', 'Hats', 'Other'] },
-      { name: 'Home', subcategories: ['View all', 'Furniture', 'Room Decor', 'Kitchenware'] },
-      { name: 'Entertainment', subcategories: ['View All', 'Books', 'Sporting Goods', 'Games', 'Other'] },
-      { name: 'School Supplies', subcategories: ['View all', 'Writing Utensils', 'Notebooks', 'Textbooks', 'Lab Supplies'] },
-      { name: 'Miscellaneous', subcategories: ['View all', 'Drinkware', 'Backpacks & Totes'] }
+      { name: 'Clothing', subcategory: ['View all', 'T-Shirts', 'Hoodies & Sweatshirts', 'Tops', 'Pants & Shorts', 'Hats', 'Other'] },
+      { name: 'Home', subcategory: ['View all', 'Furniture', 'Room Decor', 'Kitchenware'] },
+      { name: 'Entertainment', subcategory: ['View All', 'Books', 'Sporting Goods', 'Games', 'Other'] },
+      { name: 'School Supplies', subcategory: ['View all', 'Writing Utensils', 'Notebooks', 'Textbooks', 'Lab Supplies'] },
+      { name: 'Miscellaneous', subcategory: ['View all', 'Drinkware', 'Backpacks & Totes'] }
     ];
   
     return (
-      <div className={styles.categories}>
+      <div className={styles.categoryBar}>
         {categories.map((category, index) => (
           <div key={index} className={styles.categoryItem}>
             <span className={styles.categoryName}>{category.name}</span>
-            {category.subcategories.length > 1 && (
-              <div className={styles.subcategories}>
-                {category.subcategories.map((subcat, subIndex) => (
+            {true && (
+              <div className={styles.subcategory}>
+                {category.subcategory.map((subcat, subIndex) => (
                   <div key={subIndex}>{subcat}</div>
                 ))}
               </div>

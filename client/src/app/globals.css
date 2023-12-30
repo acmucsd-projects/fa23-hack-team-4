@@ -3,10 +3,13 @@
   --blue: #00629B;
   --yellow: #FFCD00;
   --gold: #C69214;
-  --sand: 245, 240, 230;
+  --sand: rgb(245, 240, 230);
+  --navyRGB: 24, 43, 73;
+  --blueRGB: 0, 98, 155;
+  --sandRGB: 245, 240, 230;
   --orange: 252, 137, 0;
 
-  background-color: var(--sand);
+  background-color: var(--navy);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -25,6 +28,8 @@ body {
 }
 
 main {
+  position: relative;
+
   min-height: 100vh;
 }
 
