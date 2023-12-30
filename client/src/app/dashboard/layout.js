@@ -3,10 +3,10 @@ import Footer from './components/footer.js'
 
 export default function DashboardLayout({ children }) {
   return (
-    <section>
+    <main>
       <Header />
       {children}
       <Footer />
-    </section>
+    </main>
   )
 }
