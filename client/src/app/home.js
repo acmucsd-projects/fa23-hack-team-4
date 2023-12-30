@@ -19,16 +19,16 @@ export default function Home() {
         objectFit='cover'
         objectPosition='center'
       />
-      <div className={styles.header}>
+      <section className={styles.header}>
         <Title />
-      </div>
-      <motion.div 
+      </section>
+      <motion.section 
         className={styles.body}
         initial={{opacity: 0, y: 75}}
         animate={{opacity: 1, y: 0}}
       >
         <Account />
-      </motion.div>
+      </motion.section>
     </main>
   )
 }
