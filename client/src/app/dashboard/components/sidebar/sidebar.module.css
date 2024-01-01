@@ -1,0 +1,40 @@
+.sidebar {
+    min-height: 50vh;
+    width: 20vw;
+}
+
+  .content {
+    margin: 0vh 1vw;
+    padding: 1vh 0vw;
+  }
+
+    .title, .filter, .sort {
+      margin: 0.75vw;
+      padding: 1vw;
+
+      border: 2px solid;
+      border-color: var(--yellow) var(--gold) var(--gold) var(--yellow) ;
+      border-radius: 10px;
+
+      background-color: rgba(var(--navyRGB), 0.025);
+    }
+
+      .content .title h1 {
+        font-weight: 650;
+        font-size: 1.9vw;
+      }
+
+      .content .title h2 {
+        font-weight: 350;
+        font-size: 1.35vw;
+      }
+
+      .content h1 {
+        font-weight: 600;
+        font-size: 1.5vw;
+      }
+
+      .content label {
+        font-weight: 350;
+        font-size: 1.3vw;
+      }
