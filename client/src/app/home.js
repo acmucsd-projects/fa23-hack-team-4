@@ -34,7 +34,7 @@ export default function Home() {
 }
 
 
-function Title() {
+export function Title() {
 
   const logo = '/images/TM-logo.png';
 
