@@ -1,6 +1,5 @@
 import './globals.css'
 import { Fraunces } from 'next/font/google'
-import AuthProvider from './context/AuthProvider'
 import React from 'react'
 import SignOutButton from './dashboard/components/authentication/SignOutButton'
 
@@ -14,12 +13,10 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <AuthProvider>
         <body className={fraunces.className}>
           <SignOutButton></SignOutButton>
           {children}
         </body>
-      </AuthProvider>
     </html>
   )
 }

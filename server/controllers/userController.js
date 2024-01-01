@@ -32,5 +32,5 @@ exports.viewProfile = async (req, res) => {
 };
 
 exports.user_detail = (req, res) => {
-    res.send('User with a username of ' + req.params.username);
+    res.json(req.user);
 }

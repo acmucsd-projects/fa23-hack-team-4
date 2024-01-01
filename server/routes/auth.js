@@ -3,13 +3,9 @@ const router = express.Router();
 
 const authController = require('../controllers/authController');
 
-// Register route
-router.post('/register', authController.registerUser);
-
-// Login route
-router.post('/login', authController.loginUser);
-
-// Logout route
-router.get('/logout', authController.logoutUser);
+router.get('/google', authController.google);
+router.get('/google/failure', authController.google_failure);
+router.get('/google/callback', authController.google_callback);
+router.get('/logout', authController.logout);
 
 module.exports = router;
