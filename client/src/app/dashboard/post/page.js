@@ -1,7 +1,9 @@
-export default function Header() {
+
+
+export default function Post() {
     return (
         <section>
-            Header
+            Post page
         </section>
     )
 }
