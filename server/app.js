@@ -58,9 +58,6 @@ app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
-const isLoggedIn = (req, res, next) => {
-  req.user ? next() : res.sendStatus(401);
-}
 app.use(session({
   secret: process.env.SESSION_SECRET,
   resave: false,
@@ -70,6 +67,13 @@ app.use(session({
 
 app.use(passport.initialize());
 app.use(passport.session());
+
+const unprotectedUrls = ['auth'];
+app.use((req, res, next) => {
+  const urlBase = req.url.split('/')[1];
+  if(unprotectedUrls.includes(urlBase) || req.user) next();
+  else res.sendStatus(401);
+})
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
