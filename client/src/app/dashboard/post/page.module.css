@@ -1,4 +1,5 @@
   .main {
+    display: flex;
     height: 100vh;
     background-color: white;
   }
@@ -7,14 +8,12 @@
     text-align: center;
     font-size: 4vw;
     font-weight: 300;
-    position: relative;
   }
   
   .description {
     text-align: center;
     font-size: 1.3vw;
     font-weight: 50;
-    position: relative; 
     margin: 1vw;
   }
 
@@ -22,7 +21,6 @@
     text-align: left;
     font-size: 1.3vw;
     font-weight: 50;
-    position: relative; 
     margin-left: 1vw;
     margin-top: 2vw;
     margin-bottom: 1vw;
@@ -35,25 +33,21 @@
     border-color: black;
     border-width: thin;
     padding-top: 1vw;
-    position: relative;
-    margin-left: 60vw;
     height: 100vh;
-    width: 39vw;
+    width: 40vw;
     border-radius: 5vh 5vh;
   }
 
   .img {
     max-width: 45vw;
     max-height: 60vh;
-    position: relative;
     margin-bottom: 1.5vh;
   }
 
   .button {
     background: rgb(114, 122, 122);
     color: white;
-    border: 0px;;
-    position: relative;
+    border: 0px;
     padding: 1vw;
     font-size: 1vw;
     border-radius: 1vw 1vw ;
@@ -62,8 +56,7 @@
   .button1 {
     background: rgb(114, 122, 122);
     color: white;
-    border: 0px;;
-    position: relative;
+    border: 0px;
     margin-left: 5vw;
     padding: 1vw;
     font-size: 1vw;
@@ -71,10 +64,8 @@
   }
   
   .imgbutset{
-    position: relative;
-    text-align: center;
-    left: -20vw;
-    top: -85vh;
+    height: 100%;
+    width: 60vw;
   }
 
 

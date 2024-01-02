@@ -5,13 +5,11 @@ import styles from './page.module.css'
 export default function Post() {
     return (
         <section className = {styles.main}>
+            <ImageSlide />
             <div className = {styles.box}>
                 <Title/>
                 <Description />
                 <Information />
-            </div>
-            <div >
-                <ImageSlide />
             </div>
         </section>
     )
