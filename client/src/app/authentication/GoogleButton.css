@@ -3,17 +3,17 @@
     -webkit-user-select: none;
     -ms-user-select: none;
     -webkit-appearance: none;
-    background-color: WHITE;
-    background-image: none;
+    /*background-color: #006FA3;*/
+    background-image: linear-gradient(to right, var(--blue), #0076B8 40%);
     border: 1px solid #747775;
     -webkit-border-radius: 20px;
     border-radius: 20px;
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
-    color: #1f1f1f;
+    color: white;
     cursor: pointer;
     font-family: 'Roboto', arial, sans-serif;
-    font-size: 14px;
+    font-size: 18px;
     height: 40px;
     letter-spacing: 0.25px;
     outline: none;
@@ -25,16 +25,9 @@
     transition: background-color .218s, border-color .218s, box-shadow .218s;
     vertical-align: middle;
     white-space: nowrap;
-    width: auto;
+    width: 100%;
     max-width: 400px;
     min-width: min-content;
-  }
-  
-  .gsi-material-button .gsi-material-button-icon {
-    height: 20px;
-    margin-right: 12px;
-    min-width: 20px;
-    width: 20px;
   }
   
   .gsi-material-button .gsi-material-button-content-wrapper {
@@ -49,6 +42,13 @@
     justify-content: space-between;
     position: relative;
     width: 100%;
+  }
+
+  .gsi-material-button .gsi-material-button-icon {
+    height: 20px;
+    margin-right: 12px;
+    min-width: 20px;
+    width: 20px;
   }
   
   .gsi-material-button .gsi-material-button-contents {
