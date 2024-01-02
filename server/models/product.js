@@ -9,7 +9,8 @@ const productSchema = new Schema({
     seller: {type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true},
     is_available: {type: Boolean, default: true},
     categories: [String],
-    offers: {type: [Schema.Types.ObjectId], ref: 'Offer', default: []},
+    last_edited: {type: Date, default: null},
+    offers: {type: [Schema.Types.ObjectId], ref: 'Offer', default: []}
 });
 
 const Product = mongoose.model('Product', productSchema);

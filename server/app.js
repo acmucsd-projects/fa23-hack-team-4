@@ -7,6 +7,8 @@ const passport = require('passport')
 const session = require('express-session');
 const GoogleStrategy = require('passport-google-oauth2').Strategy;
 
+const User = require('./models/user');
+
 dotenv.config();
 
 passport.use(new GoogleStrategy({
@@ -50,7 +52,6 @@ const postsRouter = require('./routes/posts');
 const offersRouter = require('./routes/offers');
 const productsRouter = require('./routes/products');
 const authRouter = require('./routes/auth');
-const User = require('./models/user');
 
 const app = express();
 

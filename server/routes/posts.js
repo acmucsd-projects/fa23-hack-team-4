@@ -6,11 +6,13 @@ router.get('/', post_controller.post_list);
 
 router.get('/category/:name', post_controller.post_category_get);
 
-router.get('/create-post', post_controller.post_create_get);
+router.post('/', post_controller.post_create);
 
-router.post('/create-post', post_controller.post_create_post);
+router.get('/:id', post_controller.post_get);
 
-router.get('/:id', post_controller.post_detail);
+router.put('/:id', post_controller.post_put);
+
+router.delete('/:id', post_controller.post_delete);
 
 router.delete('/:id', post_controller.delete_post);
 
