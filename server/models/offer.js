@@ -7,8 +7,8 @@ const offerSchema = new Schema({
     price: {type: Number, min: 0, required: true},
     comment: {type: String, maxLength: 250},
     timestamp: {type: Date, default: Date.now},
-    is_active: {type: Boolean, default: true},
-    is_accepted: {type: Boolean, default: false}
+    status: {type: String, required: true, enum: ['pending', 'accepted', 'rejected'], default: 'pending'}, 
+    is_withdrawn: {type: Boolean, default: false}
 });
 
 const Offer = mongoose.model('Offer', offerSchema);

@@ -7,6 +7,8 @@ const passport = require('passport')
 const session = require('express-session');
 const GoogleStrategy = require('passport-google-oauth2').Strategy;
 
+const User = require('./models/user');
+
 dotenv.config();
 
 passport.use(new GoogleStrategy({
@@ -47,9 +49,9 @@ passport.deserializeUser((user, done) => {
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
 const postsRouter = require('./routes/posts');
-const hubRouter = require('./routes/hub');
+const offerRouter = require('./routes/offers');
+const productRouter = require('./routes/products');
 const authRouter = require('./routes/auth');
-const User = require('./models/user');
 
 const app = express();
 
@@ -77,7 +79,8 @@ app.use((req, res, next) => {
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/posts', postsRouter);
-app.use('/hub', hubRouter);
+app.use('/offers', offerRouter);
+app.use('/products', productRouter);
 app.use('/auth', authRouter);
 
 mongoose.connect(process.env.DB_URL, {

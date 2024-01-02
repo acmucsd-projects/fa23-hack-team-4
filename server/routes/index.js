@@ -3,8 +3,6 @@ const router = express.Router();
 
 const index_controller = require('../controllers/indexController');
 
-router.get('/', index_controller.index);
-
-router.get('/login', index_controller.login);
+router.get('/me', index_controller.authenticated_user);
 
 module.exports = router;

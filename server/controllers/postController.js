@@ -15,7 +15,7 @@ exports.post_list = (req, res) => {
 }
 
 //Sends details about a particular post based on ID.
-exports.post_detail = (req, res) => {
+exports.post_get = (req, res) => {
     Post.findById(req.params.id)
         .exec((err, post_result) => {
             if(post_result == null) res.status(404).res.json({ error: 'Page not found' });
@@ -35,17 +35,10 @@ exports.post_category_get = (req, res) => {
 
             res.json(list_post);
         })
-    //res.send('general list of posts with a category of ' + req.params.name);
 }
 
-//Should check whether user is authenticated. If user is not, redirect to login or sign up.
-//If they are, then show them the form to create a new post.
-exports.post_create_get = (req, res, next) => {
-    res.send('create post page');
-};
-
 //Double check if user is authenticated, sanitize data, add to database
-exports.post_create_post = (req, res, next) => [
+exports.post_create = (req, res, next) => [
     body("title", "Title must not be empty.")
         .trim()
         .isLength({ min: 1, max: 80})
@@ -85,3 +78,17 @@ exports.post_create_post = (req, res, next) => [
         });
     }
 ];
+
+exports.post_get = (req, res) => {
+    
+}
+
+/* If the creator, could edit title, description, and product. However, last_edited should be changed to the current time.*/
+exports.post_put = (req, res) => {
+
+}
+
+// Can only delete if the logged in user is the creator. 
+exports.post_delete = (req, res) => {
+
+}
