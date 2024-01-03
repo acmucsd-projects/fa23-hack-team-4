@@ -1,7 +1,8 @@
 const { body, validationResult } = require("express-validator");
 const Post = require('../models/post');
-const User = require('../models/user');
 const Product = require('../models/product');
+const Offer = require('../models/offer');
+const User = require('../models/user');
 
 //Sends a general list of posts, which by default shows them by most recent.
 exports.post_list = (req, res) => {
@@ -38,10 +39,26 @@ exports.post_category_get = (req, res) => {
     //res.send('general list of posts with a category of ' + req.params.name);
 }
 
-//Should check whether user is authenticated. If user is not, redirect to login or sign up.
-//If they are, then show them the form to create a new post.
-exports.post_create_get = (req, res, next) => {
-    res.send('create post page');
+exports.delete_post = async (req, res, next) => {
+    try {
+        const postId = req.params.id;
+        const post = await Post.findById(postId);
+        const productId = post.product;
+        // deletes the associated offers with the product of the post
+        const product = await Product.findById(productId).populate('offers.offer');
+        const offers = product.offers;
+        for (const offer of offers) {
+            await Offer.findByIdAndDelete(offer._id);
+        }
+        // deletes the associated product
+        await Product.findByIdAndDelete(productId);
+        // deletes post
+        await Post.findByIdAndDelete(postId);
+        res.status(204).send(); 
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ error: 'Internal Server Error, unable to delete post' });
+    }
 };
 
 //Double check if user is authenticated, sanitize data, add to database
