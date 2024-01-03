@@ -52,6 +52,9 @@ function Information(){
             <h2 className = {styles.info} >
                 Posted:  01/01/2024
             </h2>
+            <h2 className = {styles.info} >
+                Categories: #school supply #recently posted #books 
+            </h2>
         </div>
     )
 }
