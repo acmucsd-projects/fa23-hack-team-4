@@ -3,10 +3,12 @@
   justify-content: flex-end;
   align-items: center;
 
+  position: relative;
   height: 5vh;
   width: 100vw;
 
   background-color: #D1CFCA;
+  z-index: 1;
 }
 
 .categoryItem {

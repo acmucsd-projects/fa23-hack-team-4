@@ -1,5 +1,5 @@
 .sidebar {
-    min-height: 50vh;
+    height: 50vh;
     width: 20vw;
 }
 
@@ -13,7 +13,7 @@
       padding: 1vw;
 
       border: 2px solid;
-      border-color: var(--yellow) var(--gold) var(--gold) var(--yellow) ;
+      border-color: var(--yellow) var(--gold) var(--gold) var(--yellow);
       border-radius: 10px;
 
       background-color: rgba(var(--navyRGB), 0.025);

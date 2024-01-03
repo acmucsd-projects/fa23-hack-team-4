@@ -1,0 +1,40 @@
+.postPreview {
+  height: 40vh;
+  width: 25vw;
+  margin: 0vh 1vw 3vh 0vw;
+  padding: 2vh 2vw;
+
+  border: 1px solid black;
+}
+
+.name {
+  text-align: center;
+  font-size: 1vw;
+}
+
+.info {
+  text-align: center;
+  font-size: 1vw;
+  font-weight: 400;
+}
+
+.images {
+  position: relative; 
+  z-index: -1;
+}
+
+.img {
+  max-width: 15vw;
+  max-height: 15vw;
+  margin-left: auto; 
+  margin-right: auto;
+  padding: 5px; 
+  display: block;
+  
+}
+ 
+
+  
+  
+
+
