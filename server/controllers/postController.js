@@ -80,24 +80,18 @@ exports.post_create = (req, res, next) => [
     }
 ];
 
+/* If the creator, could edit title, description, and product. However, last_edited should be changed to the current time.*/
+exports.post_put = (req, res) => {
+
+}
+
+// Can only delete if the logged in user is the creator. 
 exports.post_delete = async (req, res, next) => {
-    try {
-        const postId = req.params.id;
-        const post = await Post.findById(postId);
-        const productId = post.product;
-        // deletes the associated offers with the product of the post
-        const product = await Product.findById(productId).populate('offers.offer');
-        const offers = product.offers;
-        for (const offer of offers) {
-            await Offer.findByIdAndDelete(offer._id);
-        }
-        // deletes the associated product
-        await Product.findByIdAndDelete(productId);
-        // deletes post
-        await Post.findByIdAndDelete(postId);
-        res.status(204).send(); 
-    } catch (error) {
-        console.error(error);
-        res.status(500).json({ error: 'Internal Server Error, unable to delete post' });
-    }
+    Post.findById(req.params.id)
+        .exec((err, post) => {
+            if(err) res.json(err.errors.message);
+            else if(!post) res.status(404);
+            else if(post.creator != req.user) res.status(403);
+            else res.status(204);
+        });
 };
