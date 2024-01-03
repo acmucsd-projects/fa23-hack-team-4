@@ -1,4 +1,4 @@
-import styles from './category_bar.module.css'
+import styles from './categoryBar.module.css'
 
 export default function Category() {
     const categories = [
