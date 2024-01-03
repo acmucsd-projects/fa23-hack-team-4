@@ -47,7 +47,8 @@ passport.deserializeUser((user, done) => {
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
 const postsRouter = require('./routes/posts');
-const hubRouter = require('./routes/hub');
+const offersRouter = require('./routes/offers');
+const productsRouter = require('./routes/products');
 const authRouter = require('./routes/auth');
 const User = require('./models/user');
 
@@ -73,8 +74,9 @@ app.use(passport.session());
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/posts', postsRouter);
-app.use('/hub', hubRouter);
 app.use('/auth', authRouter);
+app.use('/offers', offersRouter);
+app.use('/products', productsRouter);
 
 mongoose.connect(process.env.DB_URL, {
     useNewUrlParser: true,
