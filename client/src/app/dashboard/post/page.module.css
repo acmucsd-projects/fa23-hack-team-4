@@ -8,6 +8,16 @@
     text-align: center;
     font-size: 4vw;
     font-weight: 300;
+    margin-top: 2vh;
+  }
+
+  .title1 {
+    text-align: left;
+    font-size: 1.5vw;
+    font-weight: 300;
+    margin-top: 2vh;
+    margin-right: 1vw;
+    margin-left: 1vw;
   }
   
   .description {
@@ -22,50 +32,91 @@
     font-size: 1.3vw;
     font-weight: 50;
     margin-left: 1vw;
-    margin-top: 2vw;
     margin-bottom: 1vw;
+    margin-right: 1vw;
+    margin-top: 1vw;
   }
 
 
   .box {
-    border-width: 1px;
     border-style: solid;
-    border-color: black;
-    border-width: thin;
-    padding-top: 1vw;
+    border-color: rgb(185, 177, 177);
     height: 100vh;
-    width: 40vw;
-    border-radius: 5vh 5vh;
+    box-shadow: 0 0 .1vw .1vw rgb(185, 177, 177) inset;
+  }
+
+  .boximg {
+    display: flex;
+    border-width: 0px;
+    border-radius: 1vw 1vw;
+    margin-top: 5vh;
+    background-color: rgba(0, 0, 0, 0.07);
+    width: 60vw;
+    height: 60vh;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 0 1vw 1vw white inset;
   }
 
   .img {
-    max-width: 45vw;
-    max-height: 60vh;
-    margin-bottom: 1.5vh;
+    max-width: 45vw; 
+    max-height: 45vh;
   }
 
-  .button {
-    background: rgb(114, 122, 122);
-    color: white;
-    border: 0px;
-    padding: 1vw;
-    font-size: 1vw;
-    border-radius: 1vw 1vw ;
+  .smallimg{
+    max-width: 7vw; 
+    margin-right: 1vw;
+    margin-top: 1vh;
+    margin-bottom: 1vh;
+    height: auto;
   }
 
-  .button1 {
-    background: rgb(114, 122, 122);
-    color: white;
-    border: 0px;
-    margin-left: 5vw;
-    padding: 1vw;
-    font-size: 1vw;
-    border-radius: 1vw 1vw ;
-  }
-  
-  .imgbutset{
-    height: 100%;
-    width: 60vw;
+  .smallimg1 {
+    display: flex; 
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
   }
 
+
+.selected {
+  opacity: 1; 
+}
+
+
+.smallimgnotselected {
+  opacity: 0.5;
+  cursor: pointer; 
+}
+
+.smallimgnotselected:hover {
+  opacity: 0.8;
+}
+
+.button {
+  background: rgb(114, 122, 122);
+  color: white;
+  border: 0px;
+  padding: 1vw;
+  font-size: 1vw;
+  border-radius: 1vw ;
+  box-shadow: 0 0 .2vw .2vw white inset;
+}
+
+.button1 {
+  background: rgb(114, 122, 122);
+  color: white;
+  border: 0px;
+  margin-left: 50vw;
+  padding: 1vw;
+  font-size: 1vw;
+  border-radius: 1vw;
+  box-shadow: 0 0 .2vw .2vw white inset;
+}
+
+.butset{
+  text-align: center;
+  position: relative;
+  top: -30vh;
+}
 

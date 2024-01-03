@@ -8,13 +8,14 @@ export default function Post() {
             <ImageSlide />
             <div className = {styles.box}>
                 <Title/>
+                <h2 className = {styles.title1}> Seller's Description: </h2>
                 <Description />
+                <h2 className = {styles.title1}>Product Information: </h2>
                 <Information />
             </div>
         </section>
     )
 }
-
 
 
 function Title(){
@@ -72,20 +73,40 @@ function ImageSlide(){
         setx((index) => (index === images.length - 1 ? 0 : index + 1));
     };
 
+
+
     return (
-        <div className = {styles.imgbutset}> 
-            <div >
-                <img src = {images[x]} className = {styles.img}  />
+        <div > 
+            <div className = {styles.boximg} >
+                <img src = {images[x]} className = {styles.img}  />     
+            </div>
+            
+            <div className = {styles.butset} >
+                <button onClick = {handlePrevious} className= {styles.button} > &lt;  </button>
+                <button onClick = {handleNext} className = {styles.button1}  >&gt;</button>
             </div>
 
-            
-            <div >
-                <button onClick = {handlePrevious} className= {styles.button} >Prev</button>
-                <button onClick = {handleNext} className = {styles.button1} >Next</button>
+            <div className = {styles.smallimg1} >
+                <SmallImages images = {images} x = {x} setx = {setx}/>
             </div>
-            
 
         </div>
         
     )
 }
+
+function SmallImages({images, x, setx}) {
+    return (
+      <>
+      {images.map(function(imag, index) {
+        return (
+          <div key = {index} className={ ` ${index === x ? styles.selected : styles.smallimgnotselected} `}  onClick={() => setx(index)}>
+            <img src = {imag} className = {styles.smallimg} />
+          </div>
+        )
+      })}
+      </>
+  
+    )
+}
+
