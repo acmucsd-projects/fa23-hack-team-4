@@ -80,16 +80,6 @@ exports.post_create = (req, res, next) => [
     }
 ];
 
-exports.post_get = (req, res) => {
-    
-}
-
-/* If the creator, could edit title, description, and product. However, last_edited should be changed to the current time.*/
-exports.post_put = (req, res) => {
-
-}
-
-// Can only delete if the logged in user is the creator. 
 exports.post_delete = async (req, res, next) => {
     try {
         const postId = req.params.id;
