@@ -6,6 +6,7 @@ const dotenv = require('dotenv');
 const passport = require('passport')
 const session = require('express-session');
 const GoogleStrategy = require('passport-google-oauth2').Strategy;
+const cors = require('cors')
 
 const User = require('./models/user');
 
@@ -68,6 +69,14 @@ app.use(session({
 
 app.use(passport.initialize());
 app.use(passport.session());
+
+const corsOptions = {
+  origin: 'http://localhost:3000',
+  methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
+  credentials: true 
+}
+
+app.use(cors(corsOptions));
 
 const unprotectedUrls = ['auth'];
 app.use((req, res, next) => {
