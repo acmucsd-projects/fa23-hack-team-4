@@ -1,9 +1,9 @@
 "use client"
+import { useState } from 'react'
+import { motion, AnimatePresence } from 'framer-motion'
 import Image from 'next/image'
 import styles from './page.module.css'
-import { motion, AnimatePresence } from 'framer-motion'
-import { useState } from 'react'
-import GoogleButton from './dashboard/components/authentication/GoogleButton'
+import GoogleButton from './authentication/GoogleButton'
 
 export default function Home() {
 
@@ -34,7 +34,7 @@ export default function Home() {
 }
 
 
-function Title() {
+export function Title() {
 
   const logo = '/images/TM-logo.png';
 
@@ -157,29 +157,27 @@ function Account() {
         }}
       >
         <h2>Welcome!</h2>
-        <h1>Sign up and head in:</h1>
-        <h3>Join your peers with your @ucsd.edu account!</h3><br />
-        <form>
-          <label for='username'>Email (Must be a @ucsd.edu address):</label><br />
-          <input type='text' id='username' name='username' placeholder='Username' /><br /><br />
-          <motion.input 
-            type='submit' 
-            value='Submit' 
-            whileHover={{ scale: 1.04 }}
-            whileTap={{ scale: 0.96 }}
-          />
-        </form>
-        <GoogleButton></GoogleButton>
+        <h1>Sign up with Google:</h1>
+        <h3>Log into Google with your @ucsd.edu account! Next time, you can login with your username (in front of @ucsd.edu)</h3><br />
+        <GoogleButton />
       </motion.div>
     )
   }
 
   function LoginPrompt() {
 
+    const [isForm, setIsForm] = useState(false);
+
+    const handleChildElementClick = (e) => {
+      e.stopPropagation()
+      setIsForm(true)
+    }
+
     if(isLogin) {
       return (
         <motion.div 
           className={styles.expandedPrompt} 
+          onClick={() => setIsForm(false)}
           layout
           initial={{ 
             opacity: 0,
@@ -202,19 +200,97 @@ function Account() {
         >
           <h2>Welcome back!</h2>
           <h1>Login for the goods:</h1><br />
-          <form>
-            <label for='username'>Username (before @ucsd.edu)</label><br />
-            <input type='text' id='username' name='username' placeholder='Username' /><br /><br />
-            <label for='password'>Password</label><br />
-            <input type='password' id='password' name='password' placeholder='Password' /><br /><br/>
-            <motion.input 
-              type='submit' 
-              value='Submit' 
-              whileHover={{ scale: 1.04 }}
-              whileTap={{ scale: 0.96 }}
-            />
-          </form>
-          <GoogleButton></GoogleButton>
+          <motion.div
+            animate={isForm ? 'open' : 'closed'}
+          >
+            <form>
+              <label for='username'>Username (before @ucsd.edu)</label><br />
+              <input 
+                onClick={(e) => handleChildElementClick(e)}
+                type='text' id='username' name='username' placeholder='Username' autoComplete='off' required 
+              /><br />
+              <AnimatePresence>
+                {isForm && 
+                  <motion.div 
+                    initial={{ 
+                      opacity: 0,
+                      y: -30
+                    }}
+                    animate={{ 
+                      opacity: 1,
+                      y: 0
+                    }}
+                    transition={{
+                      duration: 0.25,
+                      delay: 0.25
+                    }}
+                    exit={{ 
+                      transition: {
+                          duration: 0
+                      },
+                      opacity: 0,
+                      y: -30
+                    }}
+                  > 
+                    <br />
+                    <label for='password'>Password</label><br />
+                    <input 
+                      onClick={(e) => handleChildElementClick(e)}
+                      type='password' id='password' name='password' placeholder='Password' required 
+                    /><br />
+                    <br/>
+                  </motion.div>
+                }
+              </AnimatePresence>
+              <AnimatePresence>
+                {!isForm && 
+                  <motion.div
+                    initial={{ 
+                      opacity: 0,
+                      y: 30
+                    }}
+                    animate={{ 
+                      opacity: 1,
+                      y: 0
+                    }}
+                    transition={{
+                      duration: 0.25,
+                      delay: 0.25
+                    }}
+                    exit={{ 
+                      transition: {
+                          duration: 0
+                      },
+                      opacity: 0,
+                      y: 30
+                    }}
+                  >
+                    <p>or</p>
+                    <GoogleButton />
+                    <br />
+                  </motion.div>
+                }
+              </AnimatePresence>
+              <motion.input 
+                type='submit' 
+                value='Submit' 
+                disabled={!isForm}
+                variants={{
+                  open: {
+                    opacity: 1,
+                    transition: {
+                      delay: 0.1
+                    }
+                  },
+                  closed: {
+                    opacity: 0
+                  }
+                }}
+                whileHover={{ scale: 1.04 }}
+                whileTap={{ scale: 0.96 }}
+              />
+            </form>
+          </motion.div>
         </motion.div>
       )
     }
