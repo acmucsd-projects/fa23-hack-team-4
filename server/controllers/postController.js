@@ -1,8 +1,6 @@
 const { body, validationResult } = require("express-validator");
 const Post = require('../models/post');
 const Product = require('../models/product');
-const Offer = require('../models/offer');
-const User = require('../models/user');
 
 //Sends a general list of posts, which by default shows them by most recent.
 exports.post_list = (req, res) => {
@@ -39,7 +37,7 @@ exports.post_category_get = (req, res) => {
 }
 
 //Double check if user is authenticated, sanitize data, add to database
-exports.post_create = (req, res, next) => [
+exports.post_create = [
     body("title", "Title must not be empty.")
         .trim()
         .isLength({ min: 1, max: 80})
@@ -48,35 +46,28 @@ exports.post_create = (req, res, next) => [
         .trim()
         .isLength({ min: 1, max: 1000})
         .escape(),
-    body('seller').trim().escape(),
     body('product').trim().escape(),
     (req, res, next) => {
         const errors = validationResult(req);
-
-        Promise.all([
-            User.findById(req.body.seller)
-            .exec((err, userResult) => {
-                if(err) return err;
-            }),
         
         Product.findById(req.body.product)
             .exec((err, productResult) => {
                 if(err) return err;
             })
-        ]).then(results => {
-            if(errors.isEmpty()) {
-                const newPost = Post({
-                    title: req.body.title,
-                    description: req.body.description,
-                    seller: results[0],
-                    product: results[1]
-                });
-                newPost.save((err) => {
-                    if(err) return err;
-                    res.redirect(newPost.url);
-                });
-            }
-        });
+            .then(productResult => {
+                if(errors.isEmpty()) {
+                    const newPost = Post({
+                        title: req.body.title,
+                        description: req.body.description,
+                        seller: req.user,
+                        product: productResult
+                    });
+                    newPost.save((err) => {
+                        if(err) return err;
+                        res.send(newPost.url);
+                    });
+                }
+            });
     }
 ];
 
