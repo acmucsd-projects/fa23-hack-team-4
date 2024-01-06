@@ -10,6 +10,12 @@ const postSchema = new Schema({
     product: {type: mongoose.Schema.Types.ObjectId, ref: 'Product', required: true},
 });
 
+postSchema
+  .virtual('url')
+  .get(function() {
+    return "http://localhost:" + process.env.PORT + '/posts/' + this.id;
+  });
+
 const Post = mongoose.model('Post', postSchema);
 
 module.exports = Post;

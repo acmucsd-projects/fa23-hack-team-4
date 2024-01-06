@@ -12,6 +12,12 @@ const userSchema = new Schema({
     contact_method: {type: [String]},
 });
 
+userSchema
+  .virtual('url')
+  .get(function() {
+    return "http://localhost:" + process.env.PORT + '/users/' + this.username;
+  });
+
 const User = mongoose.model('User', userSchema);
 
 module.exports = User;

@@ -11,6 +11,12 @@ const offerSchema = new Schema({
     is_withdrawn: {type: Boolean, default: false}
 });
 
+offerSchema
+  .virtual('url')
+  .get(function() {
+    return "http://localhost:" + process.env.PORT + '/offers/' + this.id;
+  });
+
 const Offer = mongoose.model('Offer', offerSchema);
 
 module.exports = Offer;
