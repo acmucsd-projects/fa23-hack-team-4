@@ -7,7 +7,7 @@ const offerSchema = new Schema({
     price: {type: Number, min: 0, required: true},
     comment: {type: String, maxLength: 250},
     timestamp: {type: Date, default: Date.now},
-    is_available: {type: Boolean, default: true}, 
+    is_accepted: {type: Boolean, default: true}, 
     is_withdrawn: {type: Boolean, default: false}
 });
 
