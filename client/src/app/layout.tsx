@@ -2,7 +2,7 @@ import './globals.css'
 import { Fraunces } from 'next/font/google'
 import React from 'react'
 import SignOutButton from './authentication/SignOutButton'
-import {CurrentUserBtn, CreatePostBtn} from './fetch/fetchBtns'
+import {CurrentUserBtn, CreateProductBtn, UpdateProductBtn, DeleteProductBtn} from './fetch/fetchBtns'
 
 const fraunces = Fraunces({ subsets: ['latin'] })
 
@@ -16,8 +16,10 @@ export default function RootLayout({ children }) {
     <html lang="en">
         <body className={fraunces.className}>
           <SignOutButton />
-          <CreatePostBtn />
+          <CreateProductBtn />
           <CurrentUserBtn></CurrentUserBtn>
+          <UpdateProductBtn></UpdateProductBtn>
+          <DeleteProductBtn />
           {children}
         </body>
     </html>
