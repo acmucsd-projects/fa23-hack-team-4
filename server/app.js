@@ -15,7 +15,7 @@ dotenv.config();
 passport.use(new GoogleStrategy({
     clientID: process.env.GOOGLE_CLIENT_ID,
     clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-    callbackURL: "http://localhost:5000/auth/google/callback",
+    callbackURL: "http://localhost:" + process.env.PORT + "/auth/google/callback",
     passReqToCallback: true,
     saveUninitialized: true,
     hd: 'ucsd.edu'
@@ -91,6 +91,7 @@ app.use('/posts', postsRouter);
 app.use('/auth', authRouter);
 app.use('/offers', offersRouter);
 app.use('/products', productsRouter);
+app.use('/uploads', express.static('uploads'));
 
 mongoose.connect(process.env.DB_URL, {
     useNewUrlParser: true,
