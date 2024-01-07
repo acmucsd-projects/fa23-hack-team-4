@@ -69,15 +69,15 @@ function Categories(){
 
 function ImageSlide(){
 
-    var images = ["/images/geisel-free-background.jpeg", "/images/black.jpeg", "/images/TM-logo.png"];
-    var [x, setx] = useState(0);
+    const images = ["/images/geisel-free-background.jpeg", "/images/black.jpeg", "/images/TM-logo.png"];
+    const [x, setx] = useState(0);
     
-    var handlePrevious = () => {
+    const handlePrevious = () => {
         // Decrease the index, and loop to the last image if at the beginning
         setx((index) => (index === 0 ? images.length - 1 : index - 1));
     };
     
-    var handleNext = () => {
+    const handleNext = () => {
         // Increase the index, and loop to the first image if at the end
         setx((index) => (index === images.length - 1 ? 0 : index + 1));
     };

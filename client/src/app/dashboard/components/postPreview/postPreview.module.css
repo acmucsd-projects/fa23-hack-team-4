@@ -1,9 +1,9 @@
 .postPreview {
-  margin-left: 1vw;
-  margin-right: 1vw;
-  margin-top: 1vh; 
-  margin-bottom: 1vh;
+  height: 40vh;
+  width: 25vw;
+  margin: 0vh 1vw 3vh 0vw;
   padding: 2vh 2vw;
+
   border: 1px solid black;
 }
 
