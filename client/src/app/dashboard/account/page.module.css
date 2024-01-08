@@ -1,0 +1,52 @@
+.body {
+  display: flex;
+}
+  
+  .accountInfo {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+
+    height: 70vh;
+    width: 25vw;
+    margin-top: 10vh;
+  }
+
+  .userDesc {
+    padding: 2vh 0vw;
+  }
+
+  .name {
+    font-size: 2vw;
+  }
+
+  .username {
+    font-size: 1.75vw;
+    font-weight: 400;
+  }
+
+  .email {
+    font-size: 1.5vw;
+    font-weight: 400;
+  }
+
+  .posts {
+    display: flex;
+    flex-direction: column;
+
+    width: 75vw;
+  }
+
+    .postSection h1 {
+      margin: 2vh 0vw 2vh;
+    }
+
+    .postList {
+      display: flex;
+      flex-wrap: wrap;
+      flex-direction: row;
+
+      padding-right: 0vh 3vw;
+    }
+  

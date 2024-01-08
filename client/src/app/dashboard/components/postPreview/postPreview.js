@@ -1,32 +1,24 @@
+import Image from 'next/image';
 import styles from './postPreview.module.css'
 
-export default function PostTemplate() {
+export default function PostTemplate({ size }) {
+
+    const black = '/images/black.jpeg'
+
     return (
         <div className={styles.postPreview}>
-            <div className={styles.name}>
-                <h2>Product Name</h2>
-            </div>
-            <ImgPreview />
-            <div >
-                <h2 className = {styles.info} >
+            <Image src={black} width={100} height={100} style={{height: size, width: size}}/>
+            <div className={styles.postInfo}>
+                <h2 className={styles.name}>
+                    Product Name
+                </h2>
+                <h2 className = {styles.price} >
                     Price: $500 
                 </h2>
-                <h2 className = {styles.info} >
+                <h2 className = {styles.seller} >
                     Seller: Bob Tester
                 </h2>
             </div>
-        </div>
-        
-    )
-}
-
-function ImgPreview() {
-
-    const image = "/images/black.jpeg";
-
-    return (
-        <div >
-            <img src = {image} className = {styles.img}  />
         </div>
         
     )
