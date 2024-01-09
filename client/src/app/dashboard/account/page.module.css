@@ -17,18 +17,29 @@
     padding: 2vh 0vw;
   }
 
-  .name {
-    font-size: 2vw;
-  }
+    .name {
+      font-size: 2vw;
+    }
 
-  .username {
-    font-size: 1.75vw;
-    font-weight: 400;
-  }
+    .username {
+      font-size: 1.75vw;
+      font-weight: 400;
+    }
 
-  .email {
-    font-size: 1.5vw;
-    font-weight: 400;
+    .email {
+      font-size: 1.5vw;
+      font-weight: 400;
+    }
+
+  .accountInfo a {
+    padding: 1vw;
+
+    border: 1px solid var(--yellow);
+    border-radius: 10px;
+    background-color: var(--gold);
+
+    color: whitesmoke;
+    text-decoration: none;
   }
 
   .posts {

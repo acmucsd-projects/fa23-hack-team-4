@@ -1,69 +1,86 @@
-  .main {
+.body {
+  display: flex;
+}
+
+  .postInfo {
+    width: 45vw;
+    padding: 2vw;
+  }
+
+    .postInfo h1 {
+      font-size: 2.5vw;
+      font-weight: 400;
+      margin-top: 2vh;
+    }
+
+    .postInfo h2 {
+      font-size: 1.5vw;
+      font-weight: 500;
+      margin-top: 2vh;
+      margin-right: 1vw;
+      margin-left: 1vw;
+    }
+
+    .postInfo h3 {
+      font-size: 1.25vw;
+      font-weight: 300;
+      margin: 1vw;
+    }
+
+  .imageSlide {
+    width: 55vw;
+    padding: 6vh 2.5vw 0vh;
+  }
+
+  .imageDisplay {
     display: flex;
-    height: 100vh;
-    background-color: white;
-  }
-  
-  .title {
-    text-align: center;
-    font-size: 4vw;
-    font-weight: 300;
-    margin-top: 2vh;
-  }
-
-  .title1 {
-    text-align: left;
-    font-size: 1.5vw;
-    font-weight: 300;
-    margin-top: 2vh;
-    margin-right: 1vw;
-    margin-left: 1vw;
-  }
-  
-  .description {
-    text-align: center;
-    font-size: 1.3vw;
-    font-weight: 50;
-    margin: 1vw;
-  }
-
-  .info {
-    text-align: left;
-    font-size: 1.3vw;
-    font-weight: 50;
-    margin-left: 1vw;
-    margin-bottom: 1vw;
-    margin-right: 1vw;
-    margin-top: 1vw;
-  }
-
-
-  .box {
-    border-style: solid;
-    border-color: rgb(185, 177, 177);
-    height: 100vh;
-    box-shadow: 0 0 .1vw .1vw rgb(185, 177, 177) inset;
-  }
-
-  .boximg {
-    display: flex;
-    border-width: 0px;
-    border-radius: 1vw 1vw;
-    margin-top: 5vh;
-    background-color: rgba(0, 0, 0, 0.07);
-    width: 60vw;
-    height: 60vh;
     justify-content: center;
-    align-items: center;
-    box-shadow: 0 0 1vw 1vw white inset;
+
+    padding: 0vh 4vw;
   }
 
-  .img {
-    max-width: 45vw; 
-    max-height: 45vh;
+    .currImage {
+      max-width: 42vw; 
+      max-height: 42vh;
+    }
+
+  .imageNav {
+    position: relative;
+    bottom: 25vh;
   }
 
-  .smallimg{
+    .nav {
+      border: none;
+      border-radius: 15px;
+      width: 3vw;
+      padding: 1vw;
+
+      background-color: rgba(114, 122, 122, 0.7);
+      color: white;
+      font-size: 1vw;
+    }
+
+    .nav:hover {
+      opacity: 0.75;
+    }
+
+      .left {
+        margin-right: 22vw;
+      }
+
+      .right {
+        margin-left: 22vw;
+      }
+
+  .imgIndicator {
+    display: flex;
+    justify-content: center;
+
+    width: 100%;
+    overflow: hidden;
+  }
+
+  .imagePreview {
     max-width: 7vw; 
     margin-right: 1vw;
     margin-top: 1vh;
@@ -71,71 +88,15 @@
     height: auto;
   }
 
-  .smallimg1 {
-    display: flex; 
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-  }
+    .selected {
+      opacity: 1; 
+    }
 
+    .notSelected {
+      opacity: 0.5;
+      cursor: pointer; 
+    }
 
-.selected {
-  opacity: 1; 
-}
-
-
-.smallimgnotselected {
-  opacity: 0.5;
-  cursor: pointer; 
-}
-
-.smallimgnotselected:hover {
-  opacity: 0.8;
-}
-
-.button {
-  background-color: rgba(114, 122, 122, 0.7);
-  color: white;
-  border: 0px;
-  padding: 1vw;
-  font-size: 1vw;
-  border-radius: 1vw ;
-}
-
-.button1 {
-  background-color: rgba(114, 122, 122, 0.7);
-  color: white;
-  border: 0px;
-  margin-left: 50vw;
-  padding: 1vw;
-  font-size: 1vw;
-  opacity:.6;
-}
-
-.button:hover {
-  background-color: rgba(114, 122, 122, 0.7);
-  color: white;
-  border: 0px;
-  padding: 1vw;
-  font-size: 1vw;
-  border-radius: 1vw ;
-  opacity: .6;
-}
-
-.button1:hover {
-  background-color: rgba(114, 122, 122, 0.7);
-  color: white;
-  border: 0px;
-  margin-left: 50vw;
-  padding: 1vw;
-  font-size: 1vw;
-  border-radius: 1vw;
-  opacity: 1;
-}
-
-.butset{
-  text-align: center;
-  position: relative;
-  top: -30vh;
-}
-
+      .notSelected:hover {
+        opacity: 0.8;
+      }
