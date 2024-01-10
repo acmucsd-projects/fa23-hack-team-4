@@ -100,3 +100,33 @@
       .notSelected:hover {
         opacity: 0.8;
       }
+
+
+      .button2  {
+        padding: 1vw;
+    
+        border: 1px solid var(--yellow);
+        border-radius: 10px;
+        background-color: var(--gold);
+    
+        color: whitesmoke;
+        text-decoration: none;
+
+        display: inline-block;
+        position: relative;
+        left: 33vw;
+      }
+
+      .button3{
+        text-align: center;
+        background-color: rgba(114, 122, 122, 0.7);
+        color: white;
+        border: 0px;
+        font-size: 1vw;
+        opacity: .7;
+        text-decoration: none;
+        padding: .3vw;
+        border-radius: .4vw;
+      }
+
+  

@@ -9,7 +9,7 @@ const postSize = '19vw';
 
 export default function Account() {
 
-    const pageView = 1; /* Viewing your own account */
+    const pageView = 0; /* Viewing your own account */
     /* const pageView = 1; /* Viewing another account */
 
     if(pageView == 0) {

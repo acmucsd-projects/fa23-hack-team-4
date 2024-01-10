@@ -4,9 +4,56 @@ import styles from './page.module.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faArrowLeft, faArrowRight } from '@fortawesome/free-solid-svg-icons'
 
+
+
 export default function Post() {
-    return (
-        <section className = {styles.body}>
+
+
+    const pageView = 0; /* Viewing your own account */
+    /* const pageView = 1; /* Viewing another account */
+
+    if(pageView == 0) {
+        return (
+            <section className = {styles.body}>
+            <ImageSlide />
+            <div className = {styles.postInfo}>
+                <a className={styles.button2}>Edit Post</a>
+                <h1> Product Name</h1>
+                    <h2>Seller's Description:</h2>
+                        <h3>
+                            Product Description. This is a example description of a example product. 
+                            I want to see if the words are centered on the page correctly. Yup I think
+                            it works fine so thats very good :) 
+                        </h3>
+                    <h2>Product Information: </h2>
+                        <h3>
+                            Price: $500 
+                        </h3>
+                        <h3>
+                            Seller: Bob Tester
+                        </h3>
+                        <h3>
+                            Contact #:  (123) - 456 - 7890
+                        </h3>
+                        <h3>
+                            Email:  bobexample@ucsd.edu
+                        </h3>
+                        <h3>
+                            Posted:  01/01/2024
+                        </h3>
+                    <h2>Categories: </h2>
+                        <h3>
+                                #school-supply #books 
+                        </h3>
+                    <CurrentOffers />
+            </div>
+        </section>
+        )
+    }
+
+    if(pageView == 1) {
+        return (
+            <section className = {styles.body}>
             <ImageSlide />
             <div className = {styles.postInfo}>
                 <h1> Product Name</h1>
@@ -39,8 +86,13 @@ export default function Post() {
                     <CurrentOffers />
             </div>
         </section>
-    )
+
+        )
+    }
+
+
 }
+
 
 function CurrentOffers(){
 
@@ -63,19 +115,27 @@ function CurrentOffers(){
 }
 
 
+
 function CurrentPeople({people1}) {
     return (
       <>
         {people1.map(function(people) {
             return (
-                <div 
-                >
-                    <h3>{people.name} &nbsp;- &nbsp; ${people.price}</h3>
+                <div>
+                    <h3>{people.name} &nbsp;- &nbsp; ${people.price} {<AcceptOffer />}</h3>
                 </div>
             )
         })}
       </>
     )
+}
+
+
+function AcceptOffer(){
+    return(
+        <button className={styles.button3}>Accept Offer</button>
+    )
+
 }
 
 
@@ -132,3 +192,4 @@ function ImagePreview({images, i, setI}) {
       </>
     )
 }
+

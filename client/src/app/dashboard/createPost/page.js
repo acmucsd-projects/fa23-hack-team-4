@@ -10,17 +10,41 @@ export default function NewPost(){
             <a href='/dashboard/account' className={styles.button}>X</a>
             <div className={styles.createPost}>
                 <form>
-                    <h1 className={styles.title1}>Please fill out the following information to create a new post</h1>
-                    <h1 className={styles.title}>Title</h1>
+                    <h2 className = {styles.intro}>Please fill out the following information to create a new post</h2>
+                    <h3 className = {styles.sub} >Title</h3>
                     <textarea id="title" className={styles.input} name="Title"> </textarea>
-                    <h1 className={styles.title}>Sellers Description</h1>
+                    <h3 className = {styles.sub} >Sellers Description</h3>
                     <textarea id="price" className={styles.input} name="Seller's Description"> </textarea>
-                    <h1 className={styles.title}>Price</h1>
+                    <h3 className = {styles.sub} >Price</h3>
                     <textarea id="seller's description" className={styles.input} name="Price"> </textarea>
-                    <h1 className={styles.title}>Select up to 5 images of your product</h1>
-                    <label for="images">
-                        <input id="images" type="file"></input>
+                    <h3 className = {styles.sub} >Select All Applicable Categories</h3>
+
+                    <label for = "Categories">
+                        <select id = "Categories" name = "Categories" multiple>
+                            <Category />
+                        </select>
+
                     </label>
+
+
+                    <h3 className = {styles.sub}  >Select up to 5 images of your product</h3>
+                    <div>
+                        <label for="images">
+                            <input id="images" type="file"></input>
+                        </label>
+                        <label for="images">
+                            <input id="images" type="file"></input>
+                        </label>
+                        <label for="images">
+                            <input id="images" type="file"></input>
+                        </label>
+                        <label for="images">
+                            <input id="images" type="file"></input>
+                        </label>
+                        <label for="images">
+                            <input id="images" type="file"></input>
+                        </label>
+                    </div>
                     <div className={styles.submit}>
                         <input type="submit" className={styles.button2}></input>
                     </div>
@@ -29,3 +53,25 @@ export default function NewPost(){
         </section>
     )
 }
+
+
+
+  function Category() {
+    const categories = [ 'Clothing', 'T-Shirts', 'Hoodies & Sweatshirts', 'Tops', 'Pants & Shorts', 'Hats', 'Home', 'Furniture', 'Room Decor', 'Kitchenware' , 'Entertainment', 'Books', 'Sporting Goods', 'Games', 'Other' , 'School Supplies', 'Writing Utensils', 'Notebooks', 'Textbooks', 'Lab Supplies' , 'Miscellaneous', 'Drinkware', 'Backpacks & Totes', 'Other' ];
+    return (
+      <>
+        {categories.map(function(cat) {
+            return (
+                <>
+                    <option value = {cat}> &nbsp;{cat}&nbsp;
+                    </option>
+
+                </>
+            )
+        })}
+      </>
+    )
+}
+
+  
+  
