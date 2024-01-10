@@ -11,19 +11,22 @@ export default function NewPost(){
             <div className={styles.createPost}>
                 <form>
                     <h2 className = {styles.intro}>Please fill out the following information to create a new post</h2>
+
                     <h3 className = {styles.sub} >Title</h3>
-                    <textarea id="title" className={styles.input} name="Title"> </textarea>
+                    <textarea id="name" className={styles.input} name="name"> </textarea>
+
                     <h3 className = {styles.sub} >Sellers Description</h3>
-                    <textarea id="price" className={styles.input} name="Seller's Description"> </textarea>
+                    <textarea id="description" className={styles.input} name="description"> </textarea>
+
                     <h3 className = {styles.sub} >Price</h3>
-                    <textarea id="seller's description" className={styles.input} name="Price"> </textarea>
+                    <textarea id="price" className={styles.input} name="price"> </textarea>
+
                     <h3 className = {styles.sub} >Select All Applicable Categories</h3>
 
-                    <label for = "Categories">
-                        <select id = "Categories" name = "Categories" multiple>
+                    <label for = "Categories" name = "categories" >
+                        <select id = "Categories"  multiple>
                             <Category />
                         </select>
-
                     </label>
 
 
