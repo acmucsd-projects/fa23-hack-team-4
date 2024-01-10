@@ -1,5 +1,10 @@
-.button {
+.body a {
+  display: block;
 
+  height: 2.5vw;
+  width: 2.5vw;
+
+  color: var(--gold);
 }
 
 .createPost{
