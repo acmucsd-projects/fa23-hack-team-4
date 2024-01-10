@@ -9,7 +9,7 @@ const postSize = '19vw';
 
 export default function Account() {
 
-    const pageView = 0; /* Viewing your own account */
+    const pageView = 1; /* Viewing your own account */
     /* const pageView = 1; /* Viewing another account */
 
     if(pageView == 0) {
@@ -26,11 +26,30 @@ export default function Account() {
 
     if(pageView == 1) {
         return (
-            <section>
-                Viewing another user's account
+            <section className = {styles.body}>
+                <AccountInfo1 />
+                <div className={styles.posts}>
+                    <LivePosts />
+                </div>
             </section>
         )
     }
+
+
+}
+
+
+function AccountInfo1() {
+    return (
+        <div className={styles.accountInfo}>
+            <FontAwesomeIcon icon={faUser} style={{fontSize: '12.5vw'}}/>
+            <div className={styles.userDesc}>
+                <h2 className = {styles.name} >John Doe </h2>
+                <h2 className = {styles.username} >jdoe002</h2>
+                <h3 className = {styles.email} >jdoe002@ucsd.edu</h3>
+            </div>
+        </div>
+    )
 }
 
 function AccountInfo() {

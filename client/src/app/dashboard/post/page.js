@@ -36,14 +36,52 @@ export default function Post() {
                         <h3>
                                 #school-supply #books 
                         </h3>
+                    <CurrentOffers />
             </div>
         </section>
     )
 }
 
+function CurrentOffers(){
+
+    var people = [ 
+        {name: 'John Doe', price: 500}, 
+        {name: 'Bob Tester', price: 300}, 
+        {name: 'Alice Rabbit', price: 400}
+    ];
+    
+
+    return (
+        <div>
+            <h2>Current Offers: </h2>
+            <h3>
+                <CurrentPeople people1 = {people} />
+            </h3>
+        </div>
+
+    )
+}
+
+
+function CurrentPeople({people1}) {
+    return (
+      <>
+        {people1.map(function(people) {
+            return (
+                <div 
+                >
+                    <h3>{people.name} &nbsp;- &nbsp; ${people.price}</h3>
+                </div>
+            )
+        })}
+      </>
+    )
+}
+
+
 function ImageSlide(){
 
-    const images = ["/images/geisel-free-background.jpeg", "/images/black.jpeg", "/images/TM-logo.png"];
+    var images = ["/images/geisel-free-background.jpeg", "/images/black.jpeg", "/images/TM-logo.png"];
     const [i, setI] = useState(0);
     
     const handlePrevious = () => {
