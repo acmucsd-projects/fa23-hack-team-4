@@ -3,11 +3,6 @@ const Offer = require('../models/offer');
 const User = require('../models/user');
 const Product = require('../models/product');
 
-exports.hub = (req, res) => {
-
-    res.send('main hub page');
-}
-
 exports.offer_list = (req, res) => {
     Offer.find({})
     .sort({timestamp: -1})
@@ -29,7 +24,6 @@ exports.offer_detail = (req, res) => {
 }
 
 //list of saved posts'
-//For saved_post_list, you’ll be getting the saved posts from the user that is currently logged in.
 exports.saved_post_list = (req, res) => {
     User.find({categories: req.user.saved_posts})
         .sort({date_created: -1})
@@ -41,55 +35,45 @@ exports.saved_post_list = (req, res) => {
     });
 }
 
-//create functions
-exports.offers_create_get = (req, res) => {
-    res.send('create offer page');
-}
+//create function
 
 exports.offers_create_post = (req, res) => {
-    body("price", "Price must be between $0.25 and Asking Price.") //25cents cuz notebooks around there
-         .trim()
-    //     function to check if price is in bounds
-         .escape(),
+    body("price", "Offered price must be $0.00 or above, and within 2 decimal points.") //25cents cuz notebooks around there
+        .trim()
+        .isFloat({ min: 0.00, max: 15000.00 })
+        .matches(/^\d+(\.\d{1,2})?$/)
+        .escape(),
     body("comment", "Comment must not be empty.")
         .trim()
         .isLength({ min: 1, max: 150})
         .escape(),
-    body('buyer').trim().escape(),
+    // body('buyer').trim().escape(),
     body('seller').trim().escape(),
     body('product').trim().escape(),
     (req, res, next) => {
         const errors = validationResult(req);
 
         Promise.all([
-            User.findById(req.body.buyer)
-            .exec((err, userResult) => {
-                if(err) return err;
-
-                res.json(userResult);
-            }),
-            
-            User.findById(req.body.seller)
-            .exec((err, userResult) => {
-                if(err) return err;
-
-                res.json(userResult);
-            }),
+            User.findById(req.body.seller),
         
             Product.findById(req.body.product)
             .exec((err, productResult) => {
                 if(err) return err;
 
-                res.json(productResult);
-            })
+                Offer.find({buyer: req.user})
+                .exec((err, list_buyers) => {
+                    if(list_buyers.find(req.user)) res.status(403).res.json({ error: 'Only one offer allowed per user on each post!' });
+                    if(err) return err;        
+                })
+            }),
         ]).then(results => {
             if(errors.isEmpty()) {
                 const newOffer = Post({
                     price: req.body.price,
                     comment: req.body.comment,
-                    buyer: results[0],
-                    seller: results[1],
-                    product: results[2]
+                    buyer: req.User,
+                    seller: results[0],
+                    product: results[1]
                 });
                 newOffer.save((err) => {
                     if(err) return err;
