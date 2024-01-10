@@ -30,3 +30,15 @@ is_withdrawn if the user is the buyer
 exports.offer_put = (req, res) => {
 
 }
+
+exports.offer_delete = async (req, res) => {
+    try {
+        const offerId = req.params.id;
+        await Offer.findByIdAndDelete(offerId);
+        res.status(204).send(); 
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ error: 'Internal Server Error, unable to delete offer' });
+    }
+};
+

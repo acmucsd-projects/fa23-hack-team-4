@@ -11,4 +11,6 @@ router.get('/:id', offer_controller.offer_get);
 
 router.put('/:id', offer_controller.offer_put);
 
+router.delete('/:id', offer_controller.offer_delete);
+
 module.exports = router;
