@@ -38,51 +38,125 @@ exports.post_category_get = (req, res) => {
 
 //Double check if user is authenticated, sanitize data, add to database
 exports.post_create = [
-    body("title", "Title must not be empty.")
+    body("post-title", "Title must not be empty.")
         .trim()
         .isLength({ min: 1, max: 80})
         .escape(),
-    body("description", "Description must not be empty.")
+    body("post-description", "Description must not be empty.")
         .trim()
         .isLength({ min: 1, max: 1000})
         .escape(),
-    body('product').trim().escape(),
+    body('post-product').trim().escape(),
     (req, res, next) => {
         const errors = validationResult(req);
-        
-        Product.findById(req.body.product)
-            .exec((err, productResult) => {
-                if(err) return err;
-            })
-            .then(productResult => {
-                if(errors.isEmpty()) {
-                    const newPost = Post({
-                        title: req.body.title,
-                        description: req.body.description,
-                        seller: req.user,
-                        product: productResult
-                    });
-                    newPost.save((err) => {
-                        if(err) return err;
-                        res.send(newPost.url);
-                    });
-                }
-            });
+        if(errors.isEmpty()) {
+            Product.findById(req.body['post-product'])
+                .exec((err, product_result) => {
+                    if(err) {
+                        console.log(err);
+                        res.status(500).json({ error: 'Internal Server Error, unable to create post' });
+                    }
+                    else if(!product_result) res.status(404);
+                    else if(product_result.seller != req.user._id) res.status(403);
+                    else {
+                        const newPost = Post({
+                            title: req.body['post-title'],
+                            description: req.body['post-description'],
+                            seller: req.user,
+                            product: product_result
+                        });
+                        newPost.save((err) => {
+                            if(err) {
+                                console.log(err);
+                                res.status(500).json({ error: 'Internal Server Error, unable to save created post' });
+                            }
+                            else {res.send(newPost.url);}
+                        });
+                    }
+                });
+        }
+        else res.send(errors);
     }
 ];
 
 /* If the creator, could edit title, description, and product. However, last_edited should be changed to the current time.*/
-exports.post_put = (req, res) => {
-
-}
+exports.post_put = [
+    body("post-title", "Title must not be empty.")
+        .trim()
+        .isLength({ min: 1, max: 80})
+        .escape()
+        .optional({ nullable: true, checkFalsy: true }),
+    body("post-description", "Description must not be empty.")
+        .trim()
+        .isLength({ min: 1, max: 1000})
+        .escape()
+        .optional({ nullable: true, checkFalsy: true }),
+    body('post-product').trim().escape().optional({ nullable: true, checkFalsy: true }),
+    (req, res, next) => {
+        const errors = validationResult(req);
+        
+        if(errors.isEmpty()) {
+            Post.findById(req.params.id)
+                .exec((err, post_result) => {
+                    if(err) {
+                        console.log(err);
+                        res.status(500).json({ error: 'Internal Server Error, unable to update post' });
+                    }
+                    else if (!post_result) res.status(404)
+                    else if(post_result.creator != req.user._id) res.status(403).send("Current user is not the creator of this post; post not updated")
+                    else if(req.body['post-product']) {
+                        Product.findById(req.body['post-product'])
+                            .exec((err, product_result) => {
+                                if(err) {
+                                    console.log(err);
+                                    res.status(500).json({ error: 'Internal Server Error, unable to update post' });
+                                }
+                                else if(!product_result) res.status(404);
+                                else if(product_result.seller != req.user._id) res.status(403).send("Current user is not the seller of the product associated with the post; post not updated")
+                                else {
+                                    const newPost = {product: product_result};
+                                    if(req.body['post-title']) newPost.name = req.body['post-title'];
+                                    if(req.body['post-description']) newPost.description = req.body['post-description']
+                                    newPost.last_edited = Date.now();
+                                    Post.findOneAndUpdate({_id: req.params.id}, newPost)
+                                        .then(res.status(204).send("Post successfully updated"));
+                                }
+                            });
+                    }
+                    else {
+                        const newPost = {};
+                        if(req.body['post-title']) newPost.name = req.body['post-title'];
+                        if(req.body['post-description']) newPost.description = req.body['post-description']
+                        newPost.last_edited = Date.now();
+                        Post.findOneAndUpdate({_id: req.params.id}, newPost)
+                            .then(res.status(204).send("Post successfully updated"));
+                    }
+                });
+            
+        }
+        else res.send(errors);
+    }
+];
 
 // Can only delete if the logged in user is the creator. 
 exports.post_delete = async (req, res, next) => {
-    Post.findById(req.params.id)
-        .exec((err, post) => {
-            if(err) res.json(err.errors.message);
-            else if(!post) res.status(404);
-            else if(post.creator != req.user) res.status(403);
-            else res.status(204);
-        });
+    try {
+        Post.findById(req.params.id)
+            .exec((err, post_result) => {
+                if(err) {
+                    console.log(err);
+                    res.status(500).json({ error: 'Internal Server Error, unable to delete product' });
+                }
+                else if(!post_result) res.status(404);
+                else if(post_result.creator != req.user._id) res.status(403);
+                else {
+                    Post.deleteOne({_id: req.params.id})
+                            .then(res.status(204).send("Post successfully deleted"));
+                }
+            });
+    }
+    catch (error) {
+        console.error(error);
+        res.status(500).json({ error: 'Internal Server Error, unable to delete product' });
+    }
 };

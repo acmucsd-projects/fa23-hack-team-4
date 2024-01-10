@@ -1,6 +1,7 @@
 const { body, validationResult } = require("express-validator");
 const Product = require('../models/product')
 const Offer = require('../models/offer');
+const Post = require('../models/post');
 const fs = require('fs');
 
 exports.product_list = (req, res) => {
@@ -73,12 +74,12 @@ They can edit is_available, categories at any time. [If an offer is accepted, au
 Name, description, price can also be edited by the seller at any time, but last_edited will be changed to the current date if any of the previous are changed. 
 */
 exports.product_put = [
-    body("product-name", "Name must not be empty.")
+    body("product-name", "Name must not be empty and be 70 characters maximum.")
         .trim()
         .isLength({ min: 1, max: 70})
         .escape()
         .optional({ nullable: true, checkFalsy: true }),
-    body("product-description", "Description must not be empty.")
+    body("product-description", "Description must not be empty and be 1000 characters maximum.")
         .trim()
         .isLength({ min: 1, max: 1000})
         .escape()
@@ -123,9 +124,13 @@ exports.product_put = [
                         }
                         if(req.body['product-is_available']) {
                             newProduct.is_available = req.body['product-is_available'];
-                            if(!newProduct.is_available) product_result.offers.forEach(offer => {
-                                Offer.findByIdAndUpdate(offer._id, {is_accepted: false});
-                            });
+                            if(!newProduct.is_available) {
+                                try{Offer.updateMany({product: req.params.id}, {is_accepted: false});}
+                                catch(error) {
+                                    console.log(error)
+                                    res.status(500).json({ error: 'Error while updating associated offers, unable to update product'});
+                                }
+                            }
                         } 
 
                         if(req.body['product-name'] || req.body['product-description'] || req.body['product-price']) newProduct.last_edited = Date.now();
@@ -162,10 +167,16 @@ exports.product_delete = async (req, res, next) => {
                             fs.unlink(product_result.images[i], (err) => {
                                 if(err) {
                                     console.log(err);
-                                    res.status(500).json({ error: 'Internal Server Error, unable to delete product' });
+                                    res.status(500).json({ error: 'Error while deleting images, unable to delete product' });
                                 }
                             });
                         }
+                    }
+
+                    try{Post.deleteMany({product: productId})}
+                    catch(error){
+                        console.log(error);
+                        res.status(500).json({ error: 'Error while deleting posts associated with product, unable to delete product' });
                     }
                     Product.deleteOne({_id: productId})
                         .then(res.status(204).send("Product successfully deleted"));
