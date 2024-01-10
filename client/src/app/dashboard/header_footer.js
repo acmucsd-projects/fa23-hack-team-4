@@ -51,7 +51,7 @@ export function Header() {
     }
 
     return (
-        <section className={styles.header} onClick={() => closeMenu()}>
+        <header onClick={() => closeMenu()}>
             <div className={styles.title}>
                 <Image 
                     src={logo}
@@ -91,7 +91,7 @@ export function Header() {
                     <LogOutButton />
                 </motion.div>
             </motion.div>
-        </section>
+        </header>
     )
 }
 
@@ -100,7 +100,7 @@ export function Footer() {
     const logo = '/images/TM-logo.png';
 
     return (
-        <section className={styles.footer}>
+        <footer>
             <Image 
                 src={logo}
                 style={{
@@ -112,6 +112,6 @@ export function Footer() {
                 alt='Triton Marketplace Free and For Sale'
                 priority
             />
-        </section>
+        </footer>
     )
 }

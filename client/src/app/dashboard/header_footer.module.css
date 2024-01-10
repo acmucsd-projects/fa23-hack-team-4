@@ -1,98 +1,70 @@
-.header {
+.title {
     display: flex;
-    justify-content: space-between;
     align-items: center;
 
-    width: 100vw;
+    width: 55vw;
     height: 20vh;
-
-    padding: 0vw 3vw;
-    background-color: var(--navy);
-    background-image: linear-gradient(to right, var(--navy) 50%, var(--blue) 90%);
 }
 
-    .title {
-        display: flex;
-        align-items: center;
-
-        width: 55vw;
-        height: 20vh;
+    .name {
+        width: calc(55vw - 18vh);
+        color: whitesmoke;
     }
 
-        .name {
-            width: calc(55vw - 18vh);
-            color: whitesmoke;
+        .name h1 {
+            font-size: 4vw;
+            font-weight: 600;
         }
 
-            .name h1 {
-                font-size: 4vw;
-                font-weight: 600;
-            }
-
-            .name h2 {
-                font-size: 3vw;
-                font-weight: 350;
-            }
-
-    .account {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-
-        position: relative;
-        height: min(7.5vw, 14vh);
-        padding: 0vh 1vw;
-
-        border: 1px solid var(--yellow);
-        border-radius: 15px;
-    }
-
-        .account h2 {
-            margin-top: 1vh;
-
-            font-size: 1.25vw;
+        .name h2 {
+            font-size: 3vw;
+            font-weight: 350;
         }
 
-    .accountMenu {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
+.account {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 
-        position: absolute;
-        top: calc(100% + 1vh);
-        right: 0vw;
-        width: 15vw;
-        padding: 1vh 1vw;
+    position: relative;
+    height: min(7.5vw, 14vh);
+    padding: 0vh 1vw;
 
-        border: 1px solid var(--gold);
-        border-radius: 5px;
-        background-color: antiquewhite;
+    border: 1px solid var(--yellow);
+    border-radius: 15px;
+}
 
-        color: var(--navy);
-
-        z-index: 2;
-    }
-
-    .accountMenu .item {
-        margin: 1vh 0vw;
-        border-bottom: 1px solid var(--gold);
+    .account h2 {
+        margin-top: 1vh;
 
         font-size: 1.25vw;
     }
 
-.footer {
+.accountMenu {
     display: flex;
+    flex-direction: column;
+    justify-content: center;
     align-items: center;
-    justify-content: flex-end;
 
     position: absolute;
-    bottom: 0;
-    height: 10vh;
-    width: 100vw;
+    top: calc(100% + 1vh);
+    right: 0vw;
+    width: 15vw;
+    padding: 1vh 1vw;
 
-    padding: 0vw 1vw;
-    background-color: var(--navy);
-    background-image: linear-gradient(to right, var(--gold) 5%, var(--blue) 45%, var(--blue) 47%, var(--navy) 91%);
+    border: 1px solid var(--gold);
+    border-radius: 5px;
+    background-color: antiquewhite;
+
+    color: var(--navy);
+
+    z-index: 2;
+}
+
+.accountMenu .item {
+    margin: 1vh 0vw;
+    border-bottom: 1px solid var(--gold);
+
+    font-size: 1.25vw;
 }

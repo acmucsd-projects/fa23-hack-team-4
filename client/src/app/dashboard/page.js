@@ -18,6 +18,8 @@ export default function Dashboard() {
         setIsSearch(true)
     }
 
+    const postSize = '21vw'
+
     return (
         <section className={styles.body} onClick={() => setIsSearch(false)}>
             <Category />
@@ -63,10 +65,10 @@ export default function Dashboard() {
                         </motion.div>
                     </motion.div>
                     <div className={styles.postPreviews}>
-                        <PostPreview />
-                        <PostPreview />
-                        <PostPreview />
-                        <PostPreview />
+                        <PostPreview size={postSize}/>
+                        <PostPreview size={postSize}/>
+                        <PostPreview size={postSize}/>
+                        <PostPreview size={postSize}/>
                     </div>
                 </div>
             </div>
