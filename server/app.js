@@ -49,7 +49,6 @@ passport.deserializeUser((user, done) => {
 
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
-const postsRouter = require('./routes/posts');
 const offersRouter = require('./routes/offers');
 const productsRouter = require('./routes/products');
 const authRouter = require('./routes/auth');
@@ -87,7 +86,6 @@ app.use((req, res, next) => {
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
-app.use('/posts', postsRouter);
 app.use('/auth', authRouter);
 app.use('/offers', offersRouter);
 app.use('/products', productsRouter);

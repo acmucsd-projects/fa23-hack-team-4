@@ -1,7 +1,6 @@
 const { body, validationResult } = require("express-validator");
 const Product = require('../models/product')
 const Offer = require('../models/offer');
-const Post = require('../models/post');
 const fs = require('fs');
 
 exports.product_list = (req, res) => {
@@ -171,12 +170,6 @@ exports.product_delete = async (req, res, next) => {
                                 }
                             });
                         }
-                    }
-
-                    try{Post.deleteMany({product: productId})}
-                    catch(error){
-                        console.log(error);
-                        res.status(500).json({ error: 'Error while deleting posts associated with product, unable to delete product' });
                     }
                     Product.deleteOne({_id: productId})
                         .then(res.status(204).send("Product successfully deleted"));
