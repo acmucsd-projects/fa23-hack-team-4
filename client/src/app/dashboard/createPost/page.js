@@ -9,30 +9,30 @@ export default function NewPost(){
         <section className={styles.body}>
             <a href='/dashboard/account' className={styles.button}>X</a>
             <div className={styles.createPost}>
-                <form>
+                <form id='create-product'>
                     <h2 className = {styles.intro}>Please fill out the following information to create a new post</h2>
 
                     <h3 className = {styles.sub} >Title</h3>
-                    <textarea id="name" className={styles.input} name="name"> </textarea>
+                    <textarea id="product-name" className={styles.input} name="product-name"> </textarea>
 
                     <h3 className = {styles.sub} >Sellers Description</h3>
-                    <textarea id="description" className={styles.input} name="description"> </textarea>
+                    <textarea id="product-description" className={styles.input} name="product-description"> </textarea>
 
                     <h3 className = {styles.sub} >Price</h3>
-                    <textarea id="price" className={styles.input} name="price"> </textarea>
+                    <textarea id="product-price" className={styles.input} name="product-price"> </textarea>
 
                     <h3 className = {styles.sub} >Select All Applicable Categories</h3>
 
-                    <label for = "Categories" name = "categories" >
-                        <select id = "Categories"  multiple>
+                    <label for = "product-categories" name = "product-categories" >
+                        <select id = "product-categories"  multiple>
                             <Category />
                         </select>
                     </label>
 
 
                     <h3 className = {styles.sub}  >Select up to 5 images of your product</h3>
-                    <label for="images">
-                        <input id="images" type="file" multiple></input>
+                    <label for="product-image[]">
+                        <input id="product-image[]" type="file" multiple></input>
                     </label>
                         
                     <div className={styles.submit}>

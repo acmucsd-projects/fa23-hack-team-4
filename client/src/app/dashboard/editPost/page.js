@@ -12,32 +12,30 @@ export default function NewPost(){
         <section className={styles.body}>
             <a href='/dashboard/post' className={styles.button}>X</a>
             <div className={styles.createPost}>
-                <form>
+                <form id='update-product'>
                     <h2 className = {styles.intro}>Please edit your post as needed and submit changes at end</h2>
 
                     <h3 className = {styles.sub} >Title</h3>
-                    <textarea id="name" className={styles.input} name="name">{currentPostInfo.name}</textarea>
+                    <textarea id="product-name" className={styles.input} name="product-name">{currentPostInfo.name}</textarea>
 
                     <h3 className = {styles.sub} >Sellers Description</h3>
-                    <textarea id="description" className={styles.input} name="description">{currentPostInfo.description}</textarea>
+                    <textarea id="product-description" className={styles.input} name="product-description">{currentPostInfo.description}</textarea>
 
                     <h3 className = {styles.sub} >Price</h3>
-                    <textarea id="price" className={styles.input} name="price">{currentPostInfo.price}</textarea>
+                    <textarea id="product-price" className={styles.input} name="product-price">{currentPostInfo.price}</textarea>
 
                     <h3 className = {styles.sub} >Select All Applicable Categories</h3>
 
-                    <label for = "Categories" name = "categories" >
-                        <select id = "Categories"  multiple defaultValue={currentPostInfo.categories}>
+                    <label for = "prduct-categories" name = "product-categories" >
+                        <select id = "product-categories"  multiple defaultValue={currentPostInfo.categories}>
                             <Category />
                         </select>
                     </label>
-
 
                     <h3 className = {styles.sub}  >Select up to 5 images of your product</h3>
                     <label for="images">
                         <input id="images" type="file" multiple></input>
                     </label>
-
 
                     <h3 className = {styles.sub}  >Current Images</h3>
 
@@ -49,7 +47,6 @@ export default function NewPost(){
                         <input type="submit" className={styles.button2}></input>
                     </div>
 
-                    
                 </form>
             </div>
         </section>
