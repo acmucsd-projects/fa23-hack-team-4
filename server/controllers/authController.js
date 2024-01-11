@@ -4,6 +4,7 @@ exports.google = passport.authenticate('google', { scope: ['email', 'profile']})
 
 exports.google_success = (req, res) => {
   res.redirect('http://localhost:3000/dashboard');
+  return;
 };
 
 exports.google_failure = (req, res) => {

@@ -27,17 +27,17 @@ passport.use(new GoogleStrategy({
     const indexOfSplit = email.indexOf('@');
     const username = email.substring(0, indexOfSplit);
     
-    if(userInfo.hd !== 'ucsd.edu') done(new Error("Email must come from the domain: ucsd.edu"))
+    if(userInfo.hd !== 'ucsd.edu') return done(new Error("Email must come from the domain: ucsd.edu"))
     else {
-      const user = await User.findOne({ username }, (err, user) => done(err, user));
-      const newUser = User({name, username, email, is_verified: true});
-      newUser.save((err) => {
-          if(err) return err;
-          return done(err, user);
-      });
+      const user = await User.findOne({ username }, (err, user) => {if(user) return done(err, user)});
+      if(!user) {
+        const newUser = User({name, username, email, is_verified: true});
+        newUser.save((err) => {
+            return done(err, newUser);
+        });
+      }
     }
-  }
-));
+}));
 
 passport.serializeUser((user, done) => {
   done(null, user)
