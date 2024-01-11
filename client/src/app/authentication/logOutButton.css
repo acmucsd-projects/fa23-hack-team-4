@@ -1,0 +1,15 @@
+#signOutButton {
+    margin: 0.5vh 0vw;
+    padding: 0.5vh 2vw;
+
+    font-size: 1.2vw;
+    font-weight: 500;
+
+    border: 1px solid var(--gold);
+    border-radius: 5px;
+    background-color: #D1CFCA;
+}
+
+#signOutButton:hover {
+    background-color: var(--sand);
+}

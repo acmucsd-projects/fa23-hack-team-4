@@ -1,8 +1,8 @@
 "use client"
+import { useState } from 'react'
+import { motion, AnimatePresence } from 'framer-motion'
 import Image from 'next/image'
 import styles from './page.module.css'
-import { motion, AnimatePresence } from 'framer-motion'
-import { useEffect, useState } from 'react'
 import GoogleButton from './authentication/GoogleButton'
 
 export default function Home() {
@@ -19,16 +19,16 @@ export default function Home() {
         objectFit='cover'
         objectPosition='center'
       />
-      <section className={styles.header}>
+      <div className={styles.header}>
         <Title />
-      </section>
-      <motion.section 
+      </div>
+      <motion.div 
         className={styles.body}
         initial={{opacity: 0, y: 75}}
         animate={{opacity: 1, y: 0}}
       >
         <Account />
-      </motion.section>
+      </motion.div>
     </main>
   )
 }
@@ -166,18 +166,18 @@ function Account() {
 
   function LoginPrompt() {
 
-    const [isForm, toggleForm] = useState(false);
+    const [isForm, setIsForm] = useState(false);
 
     const handleChildElementClick = (e) => {
       e.stopPropagation()
-      toggleForm(true)
+      setIsForm(true)
     }
 
     if(isLogin) {
       return (
         <motion.div 
           className={styles.expandedPrompt} 
-          onClick={() => toggleForm(false)}
+          onClick={() => setIsForm(false)}
           layout
           initial={{ 
             opacity: 0,

@@ -1,0 +1,70 @@
+.title {
+    display: flex;
+    align-items: center;
+
+    width: 55vw;
+    height: 20vh;
+}
+
+    .name {
+        width: calc(55vw - 18vh);
+        color: whitesmoke;
+    }
+
+        .name h1 {
+            font-size: 4vw;
+            font-weight: 600;
+        }
+
+        .name h2 {
+            font-size: 3vw;
+            font-weight: 350;
+        }
+
+.account {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    position: relative;
+    height: min(7.5vw, 14vh);
+    padding: 0vh 1vw;
+
+    border: 1px solid var(--yellow);
+    border-radius: 15px;
+}
+
+    .account h2 {
+        margin-top: 1vh;
+
+        font-size: 1.25vw;
+    }
+
+.accountMenu {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    position: absolute;
+    top: calc(100% + 1vh);
+    right: 0vw;
+    width: 15vw;
+    padding: 1vh 1vw;
+
+    border: 1px solid var(--gold);
+    border-radius: 5px;
+    background-color: antiquewhite;
+
+    color: var(--navy);
+
+    z-index: 2;
+}
+
+.accountMenu .item {
+    margin: 1vh 0vw;
+    border-bottom: 1px solid var(--gold);
+
+    font-size: 1.25vw;
+}
