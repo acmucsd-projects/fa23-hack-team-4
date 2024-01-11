@@ -1,5 +1,6 @@
 'use client'
 import React, { useEffect, useState } from 'react'
+import Link from 'next/link'
 import styles from './page.module.css'
 import PostPreview from '../components/postPreview/postPreview.js'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -7,13 +8,12 @@ import { faUser } from '@fortawesome/free-solid-svg-icons'
 
 const postSize = '19vw';
 
-const isUser = false;
-
 export default function Account() {
-
-    /* useEffect(() => {
+    
+    const [isUser, setIsUser] = useState(null);
+    useEffect(() => {
         const fetchUser = async () => {
-            const res = await fetch('https://localhost:5000/me', {
+            const res = await fetch('http://localhost:5000/me', {
                 method: 'GET',
                 credentials: 'include',
                 headers: {
@@ -23,18 +23,16 @@ export default function Account() {
             const userData = await res.json();
             
             if(res.ok) {
-                console.log('ran')
-            } else {
-                console.log('fuck you')
-            }
+                setIsUser(true);
+            } 
         }
 
         fetchUser();
-    }, []) */
+    }, []) 
 
     return (
         <section className = {styles.body}>
-            <AccountInfo />
+            <AccountInfo isUser/>
             <div className={styles.posts}>
                 <LivePosts />
                 {isUser && <ArchivedPosts />}
@@ -43,9 +41,7 @@ export default function Account() {
     )
 }
 
-function AccountInfo() {
-
-    console.log(isUser)
+function AccountInfo(isUser) {
 
     return (
         <div className={styles.accountInfo}>
@@ -55,16 +51,16 @@ function AccountInfo() {
                 <h2 className = {styles.username} >jdoe002</h2>
                 <h3 className = {styles.email} >jdoe002@ucsd.edu</h3>
             </div>
-            <CreateListing />
+            <CreateListing isUser/>
         </div>
     )
 }
 
-function CreateListing() {
+function CreateListing(isUser) {
 
-    if(isUser == true) {
+    if(isUser) {
         return (
-            <a href='/dashboard/createPost'>Create Listing</a>
+            <Link href='/dashboard/createPost'>Create Listing</Link>
         )
     }
 }

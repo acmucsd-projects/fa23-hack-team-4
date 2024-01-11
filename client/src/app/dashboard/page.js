@@ -1,12 +1,12 @@
 'use client'
 import { useState } from 'react'
 import { motion } from 'framer-motion'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons'
 import styles from './page.module.css'
 import Sidebar from './components/sidebar/sidebar.js'
 import Category from './components/categoryBar/categoryBar.js'
 import PostPreview from './components/postPreview/postPreview.js'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons'
 
 
 export default function Dashboard() {

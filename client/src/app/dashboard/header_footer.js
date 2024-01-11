@@ -1,10 +1,11 @@
 "use client"
 import { useState } from 'react'
+import Link from 'next/link'
 import Image from 'next/image'
-import styles from './header_footer.module.css'
 import { motion } from 'framer-motion'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faUser } from '@fortawesome/free-solid-svg-icons'
+import styles from './header_footer.module.css'
 import LogOutButton from '../authentication/LogOutButton'
 
 export function Header() {
@@ -52,24 +53,26 @@ export function Header() {
 
     return (
         <header onClick={() => closeMenu()}>
-            <div className={styles.title}>
-                <Image 
-                    src={logo}
-                    style={{
-                    width: '18vh',
-                    height: '18vh'
-                    }}
-                    width={960}
-                    height={240}
-                    alt='Triton Marketplace Free and For Sale'
-                    priority
-                />
-                <div className={styles.name}>
-                    <h1><span style={{color: 'var(--yellow)'}}>Triton</span>&nbsp;
-                    <span style={{color: 'var(--gold'}}>Marketplace</span></h1>
-                    <h2>UCSD Free and For Sale</h2>
+            <Link href='/dashboard' style={{textDecoration: 'none'}}>
+                <div className={styles.title}>
+                    <Image 
+                        src={logo}
+                        style={{
+                        width: '18vh',
+                        height: '18vh'
+                        }}
+                        width={960}
+                        height={240}
+                        alt='Triton Marketplace Free and For Sale'
+                        priority
+                    />
+                    <div className={styles.name}>
+                        <h1><span style={{color: 'var(--yellow)'}}>Triton</span>&nbsp;
+                        <span style={{color: 'var(--gold'}}>Marketplace</span></h1>
+                        <h2>UCSD Free and For Sale</h2>
+                    </div>
                 </div>
-            </div>
+            </Link>
             
             <motion.div 
                 className={styles.account}
@@ -87,7 +90,7 @@ export function Header() {
                 animate={isOpen ? 'open' : 'closed'}
                 variants={accountMenuVariant}
                 >
-                    <div className={styles.item}>View Account</div>
+                    <Link className={styles.item} href='/dashboard/account'>View Account</Link>
                     <LogOutButton />
                 </motion.div>
             </motion.div>
