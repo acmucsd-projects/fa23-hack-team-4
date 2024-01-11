@@ -115,6 +115,23 @@
         display: inline-block;
         position: relative;
         left: 33vw;
+        opacity: .7;
+      }
+
+      .button2:hover  {
+        padding: 1vw;
+    
+        border: 1px solid var(--yellow);
+        border-radius: 10px;
+        background-color: var(--gold);
+    
+        color: whitesmoke;
+        text-decoration: none;
+
+        display: inline-block;
+        position: relative;
+        left: 33vw;
+        opacity: 1;
       }
 
       .button3{

@@ -17,7 +17,7 @@ export default function Post() {
             <section className = {styles.body}>
             <ImageSlide />
             <div className = {styles.postInfo}>
-                <a className={styles.button2}>Edit Post</a>
+                <a className={styles.button2} href = '/dashboard/editPost'>Edit Post</a>
                 <h1> Product Name</h1>
                     <h2>Seller's Description:</h2>
                         <h3>
@@ -137,6 +137,7 @@ function AcceptOffer(){
     )
 
 }
+
 
 
 function ImageSlide(){
