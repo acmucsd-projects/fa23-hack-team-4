@@ -144,6 +144,22 @@
         text-decoration: none;
         padding: .3vw;
         border-radius: .4vw;
+        opacity: .7;
       }
+
+
+      .button3:hover{
+        text-align: center;
+        background-color: rgba(114, 122, 122, 0.7);
+        color: white;
+        border: 0px;
+        font-size: 1vw;
+        opacity: .7;
+        text-decoration: none;
+        padding: .3vw;
+        border-radius: .4vw;
+        opacity: 1;
+      }
+
 
   
