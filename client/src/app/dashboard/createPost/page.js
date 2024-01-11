@@ -1,6 +1,7 @@
 'use client'
-import styles from './page.module.css'
 import React, { useState } from 'react'
+import Link from 'next/link'
+import styles from './page.module.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faXmarkSquare } from '@fortawesome/free-solid-svg-icons'
 
@@ -9,9 +10,9 @@ export default function NewPost(){
     return(
         <section className={styles.body}>
             <div className={styles.createPost}>
-                <a href='/dashboard/account'>
+                <Link href='/dashboard/account'>
                     <FontAwesomeIcon icon={faXmarkSquare} style={{height: '2.5vw', width: '2.5vw'}}/>
-                </a>
+                </Link>
                 <h1 className={styles.title}>New Listing Information:</h1>
                 <form id='create-product' style={{display: 'flex'}}>
                     <div className={styles.formHalf}>
