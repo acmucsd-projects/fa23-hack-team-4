@@ -2,11 +2,12 @@
 .createPost{
   display: flex;
   justify-content: center;
+  align-items: center;
   flex-direction: column;
   padding-left: 2.5vw;
   padding-right: 2.5vw;
-  padding-top: 1vw;
-  padding-bottom: 2.5vw;
+  padding-top: 1vw; 
+  padding-bottom: 2.5vw; 
   border-width: 0px;
   border-radius: 1vw 1vw;
   background-color: #F5F0E6;
@@ -66,12 +67,28 @@
     justify-content: center;
   }
 
-  .input{
-    width: 90vw;
-  }
+
 
 .sub{
+  display: flex;
+  flex-direction: column;
   padding-top: 1vw;
+  padding-bottom: .2vh;;
   font-weight: 500;
+}
+
+
+
+
+.input3{
+  width: 25vw;
+}
+
+.input{
+  max-width: 15vw;
+}
+
+.input2{
+  width: 5vw;
 }
 
