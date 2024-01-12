@@ -110,6 +110,74 @@
       margin-left: 1vw;
     }
 
+<<<<<<< HEAD
+      .notSelected:hover {
+        opacity: 0.8;
+      }
+
+
+      .button2  {
+        padding: 1vw;
+    
+        border: 1px solid var(--yellow);
+        border-radius: 10px;
+        background-color: var(--gold);
+    
+        color: whitesmoke;
+        text-decoration: none;
+
+        display: inline-block;
+        position: relative;
+        left: 33vw;
+        opacity: .7;
+      }
+
+      .button2:hover  {
+        padding: 1vw;
+    
+        border: 1px solid var(--yellow);
+        border-radius: 10px;
+        background-color: var(--gold);
+    
+        color: whitesmoke;
+        text-decoration: none;
+
+        display: inline-block;
+        position: relative;
+        left: 33vw;
+        opacity: 1;
+      }
+
+      .button3{
+        text-align: center;
+        background-color: rgba(114, 122, 122, 0.7);
+        color: white;
+        border: 0px;
+        font-size: 1vw;
+        opacity: .7;
+        text-decoration: none;
+        padding: .3vw;
+        border-radius: .4vw;
+        opacity: .7;
+      }
+
+
+      .button3:hover{
+        text-align: center;
+        background-color: rgba(114, 122, 122, 0.7);
+        color: white;
+        border: 0px;
+        font-size: 1vw;
+        opacity: .7;
+        text-decoration: none;
+        padding: .3vw;
+        border-radius: .4vw;
+        opacity: 1;
+      }
+
+
+  
+=======
     .postBody h3 {
       font-size: 1.25vw;
       font-weight: 300;
@@ -126,3 +194,4 @@
       font-size: 1.25vw;
       color: whitesmoke;
     }
+>>>>>>> 4ac5fb5f69dae0651ec7aa342c23846a13ae3dab

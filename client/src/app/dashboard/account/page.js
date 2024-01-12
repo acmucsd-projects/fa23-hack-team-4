@@ -30,6 +30,45 @@ export default function Account() {
         fetchUser();
     }, []) 
 
+<<<<<<< HEAD
+    if(pageView == 0) {
+        return (
+            <section className = {styles.body}>
+                <AccountInfo />
+                <div className={styles.posts}>
+                    <LivePosts />
+                    <ArchivedPosts />
+                </div>
+            </section>
+        )
+    }
+
+    if(pageView == 1) {
+        return (
+            <section className = {styles.body}>
+                <AccountInfo1 />
+                <div className={styles.posts}>
+                    <LivePosts />
+                </div>
+            </section>
+        )
+    }
+
+
+}
+
+
+function AccountInfo1() {
+    return (
+        <div className={styles.accountInfo}>
+            <FontAwesomeIcon icon={faUser} style={{fontSize: '12.5vw'}}/>
+            <div className={styles.userDesc}>
+                <h2 className = {styles.name} >John Doe </h2>
+                <h2 className = {styles.username} >jdoe002</h2>
+                <h3 className = {styles.email} >jdoe002@ucsd.edu</h3>
+            </div>
+        </div>
+=======
     return (
         <section className = {styles.body}>
             <AccountInfo isUser/>
@@ -38,6 +77,7 @@ export default function Account() {
                 {isUser && <ArchivedPosts />}
             </div>
         </section>
+>>>>>>> 4ac5fb5f69dae0651ec7aa342c23846a13ae3dab
     )
 }
 

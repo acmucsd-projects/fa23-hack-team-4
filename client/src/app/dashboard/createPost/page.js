@@ -10,73 +10,119 @@ export default function NewPost(){
     return(
         <section className={styles.body}>
             <div className={styles.createPost}>
-                <Link href='/dashboard/account'>
-                    <FontAwesomeIcon icon={faXmarkSquare} style={{height: '2.5vw', width: '2.5vw'}}/>
-                </Link>
-                <h1 className={styles.title}>New Listing Information:</h1>
-                <form id='create-product' style={{display: 'flex'}}>
-                    <div className={styles.formHalf}>
-                        <label for='product-name'>
-                            Title
-                        </label>
-                        <input type='text' id='product-name' name='product-name' placeholder='What are you selling?' autoComplete='off' required/>
-                        <br />
 
-                        <label for='product-description'>
-                            Description
-                        </label>
-                        <textarea id='product-description' name='product-description' placeholder='Describe your item here' />
-                        <br />
+                <form id='create-product' action={"http://localhost:5000/products/"} method="post" encType="multipart/form-data" target="/dashboard">
+                    <h2 className = {styles.intro}>Please fill out the following information to create a new post</h2>
 
-                        <label for='product-price'>
-                            Price
-                        </label>
-                        <input type='text' id='product-price' name='product-price' placeholder='"Free" or a number' autoComplete='off' required/>
+                    <label htmlFor ="product-name" className = {styles.sub} >Title</label>
+                    <input type = "text" id="product-name" className={styles.input3} name="product-name" maxLength="70"></input>
+
+                    <label htmlFor = "product-description" className = {styles.sub} >Sellers Description</label>
+                    <textarea id="product-description" className={styles.input3} name="product-description" maxLength="1000"> </textarea>
+
+                    <label htmlFor = "product-price" className = {styles.sub} >Price</label>
+                    <input type="number" id="product-price" name="product-price" min="0" step=".01" className = {styles.input2} />
+
+                    <label htmlFor="product-is_available" className = {styles.sub}>Available </label>
+                    <select id="product-is_available" name="product-is_available">
+                        <option value={true}>True</option>
+                        <option value={false}>False</option>
+                    </select>
+
+                    <label htmlFor="product-is_on_campus" className = {styles.sub}>On campus availability: </label>
+                    <select id="product-is_on_campus" name="product-is_on_campus">
+                        <option value={true}>True</option>
+                        <option value={false}>False</option>
+                    </select>
+
+                    <label for = "product-categories[]" name = "product-categories[]" className = {styles.sub} >Select All Applicable Categories
+                        <Category></Category>
+                    </label>
+                    
+                    <label htmlFor="product-image[]" className = {styles.sub}>Select up to 5 images of your product 
+                        <input id="product-image[]" type="file" multiple accept='.jpeg, .png, .jpg' ></input>
+                    </label>
+                        
+                    <div className={styles.submit}>
+                        <input type="submit" className={styles.button2}></input>
                     </div>
-                    <div className={styles.formHalf}>
-                        <label for="product-categories" name="product-categories">
-                            Select All Applicable Categories <br />
-                            <span style={{fontSize: '1.2vw'}}>(Hold Ctrl/Command to select multiple)</span>
-                        </label>
-                        <select id="product-categories" size={8} multiple>
-                            <Category />
-                        </select>
-                        <br />
 
-                        <label for='product-image[]'>
-                            Upload up to 5 images <br />
-                            <span style={{fontSize: '1.2vw'}}>(Hold Ctrl/Command in file finder to select multiple)</span>
-                        </label>
-                        <input type='file' id='product-image[]' multiple></input>
-                        <br />
-
-                        <input type="submit" />
-                    </div>
                 </form>
+
+
             </div>
         </section>
     )
 }
 
-function Category() {
 
-    const categories = 
-        ['Clothing', 'T-Shirts', 'Hoodies & Sweatshirts', 'Tops', 
-        'Pants & Shorts', 'Hats', 'Home', 'Furniture', 'Room Decor', 
-        'Kitchenware' , 'Entertainment', 'Books', 'Sporting Goods', 
-        'Games', 'Other' , 'School Supplies', 'Writing Utensils', 
-        'Notebooks', 'Textbooks', 'Lab Supplies' , 'Miscellaneous', 
-        'Drinkware', 'Backpacks & Totes', 'Other' ];
 
+/*
+<form id='update-product' action={"http://localhost:5000/products/" + PRODUCT_ID} method="post" encType="multipart/form-data" target="dummyframe">
+<label htmlFor="product-name">Name: </label>
+<input type="text" id="product-name" name="product-name" maxLength="70"/>
+
+<label htmlFor="product-description">Description:</label>
+<textarea id="product-description" name="product-description" maxLength="1000"></textarea>
+
+<label htmlFor="product-price">Price: </label>
+<input type="number" id="product-price" name="product-price" min="0" step=".01"/>
+
+<label htmlFor="product-image[]">Image(s): </label>
+<input type="file" id="product-image[]" name="product-image[]" multiple accept='.jpeg, .png, .jpg'/>
+
+<label htmlFor="product-is_available">Available: </label>
+<select id="product-is_available" name="product-is_available">
+    <option value={true}>True</option>
+    <option value={false}>False</option>
+</select>
+
+<label htmlFor="product-is_on_campus">On campus availability: </label>
+<select id="product-is_on_campus" name="product-is_on_campus">
+    <option value={true}>True</option>
+    <option value={false}>False</option>
+</select>
+
+<label htmlFor="product-categories" name="product-categories">Categories:</label>
+<Category />
+
+<button type='submit'>Update Product</button>
+<iframe name="dummyframe" id="dummyframe" style={{display: "none"}}></iframe>
+</form>
+
+*/
+
+/*
+  function Category() {
+    const categories = [ 'Clothing', 'T-Shirts', 'Hoodies & Sweatshirts', 'Tops', 'Pants & Shorts', 'Hats', 'Home', 'Furniture', 'Room Decor', 'Kitchenware' , 'Entertainment', 'Books', 'Sporting Goods', 'Games', 'Other' , 'School Supplies', 'Writing Utensils', 'Notebooks', 'Textbooks', 'Lab Supplies' , 'Miscellaneous', 'Drinkware', 'Backpacks & Totes', 'Other' ];
     return (
       <>
         {categories.map(function(cat) {
             return (
-                <option value={cat}> 
-                    &nbsp;{cat}&nbsp;
-                </option>
+                <>
+                    <option value = {cat}> &nbsp;{cat}&nbsp;
+                    </option>
+
+                </>
             )
         })}
       </>
+    )
+}
+
+  
+  */
+
+function Category() {
+    const categories = [ 'Clothing', 'T-Shirts', 'Hoodies & Sweatshirts', 'Tops', 'Pants & Shorts', 'Hats', 'Home', 'Furniture', 'Room Decor', 'Kitchenware' , 'Entertainment', 'Books', 'Sporting Goods', 'Games', 'Other' , 'School Supplies', 'Writing Utensils', 'Notebooks', 'Textbooks', 'Lab Supplies' , 'Miscellaneous', 'Drinkware', 'Backpacks & Totes', 'Other' ];
+    return (
+        <select id="product-categories" name="product-categories" multiple>
+            {categories.map(function(cat) {
+                return (
+                    <option value={cat}> &nbsp;{cat}&nbsp;</option>
+
+                )
+            })}
+        </select>
     )
 }
