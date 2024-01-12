@@ -1,21 +1,23 @@
 const { body, validationResult } = require("express-validator");
 const Offer = require('../models/offer');
 const Product = require('../models/product');
+const {handleQuery} = require('../helpers/queryHandler');
 
 exports.offer_list = (req, res) => {
-    Offer.find({})
-    .sort({timestamp: -1})
-    .exec((err, list_offers) => {
-        if(err) {
-            console.log(err);
-            res.status(500).json({ error: 'Internal Server Error, unable to get offer list' });
-        }
+    Offer.find(handleQuery(req.query.filter))
+        .sort(handleQuery(req.query.sort))
+        .exec((err, list_offers) => {
+            if(err) {
+                console.log(err);
+                res.status(500).json({ error: 'Internal Server Error, unable to get offer list' });
+            }
 
-        res.json(list_offers);
-    });
+            res.json(list_offers);
+        });
 }
 
 //Only allow one offer per user per product
+//Also do not allow the seller to make an offer on their own product.
 exports.offer_create = [
     body("offer-price", "Offered price must be $0.00 or above, and within 2 decimal points.") 
         .trim()
@@ -40,12 +42,14 @@ exports.offer_create = [
                     else if(!product_result) res.status(404);
                     else {
                         Offer.find({product: product_result, buyer: req.user._id})
+                            .populate('product', 'seller')
                             .exec((err, offer_result) => {
                                 if(err) {
                                     console.log(err);
                                     res.status(500).json({ error: 'Internal Server Error, unable to create offer' });
                                 }
-                                else if(offer_result != null) res.status(403).res.json({ error: 'Only one offer allowed per user on each post!' });
+                                else if(offer_result.length != 0) res.status(403).json({ error: 'Only one offer allowed per user on each post!' });
+                                else if(offer_result.product.seller == req.user._id)  res.status(403).json({ error: 'Unable to make offer on own product' });
                                 else {
                                     const newOffer = Offer({
                                         price: req.body['offer-price'],
@@ -107,17 +111,18 @@ exports.offer_put = [
         
         if(errors.isEmpty()) {
             Offer.findById(req.params.id)
-                .populate('product', 'seller')
+                .populate('product', 'seller is_available')
                 .exec((err, offer_result) => {
                     if(err) {
                         console.log(err);
                         res.status(500).json({ error: 'Internal Server Error, unable to update offer' });
                     }
-                    else if(!offer_result) res.status(404)
+                    else if(!offer_result) res.status(404).json({error: "Offer not found"})
                     //Check for update request from the seller
                     else if(req.body['offer-is_accepted']) {
-                        if(offer_result.product.seller != req.user) res.status(403).send("Current user is not the seller of this product; offer accepted status not changed")
-                        else if(!offer_result.product.is_available) res.status(403).send("Product is currently unavailable; offer accepted status not changed")
+                        if(offer_result.product.seller != req.user._id) res.status(403).json({ error: ("Current user is not the seller of this product; offer accepted status not changed")})
+                        else if(!offer_result.product.is_available) res.status(403).json({ error: ("Product is currently unavailable; offer accepted status not changed")})
+                        else if(offer_result.is_withdrawn) res.status(403).json({ error: ("Offer is withdrawn; offer accepted status not changed")})
                         else {
                             Offer.findOneAndUpdate({_id: req.params.id}, {is_accepted: req.body['offer-is_accepted']})
                                 .then(res.status(204).send("Offer successfully updated"));
@@ -128,7 +133,7 @@ exports.offer_put = [
                         const newOffer = {};
                         if(req.body['offer-price']) newOffer.price = req.body['offer-price'];
                         if(req.body['offer-comment']) newOffer.comment = req.body['offer-comment'];
-                        if(req.body['offer-is_withdrawn']) newOffer.is_withdrawn = req.body['is-withdrawn'];
+                        if(req.body['offer-is_withdrawn']) newOffer.is_withdrawn = req.body['offer-is_withdrawn'];
                         newOffer.last_edited = Date.now();
                         newOffer.is_accepted = false;
                         Offer.findOneAndUpdate({_id: req.params.id}, newOffer)
