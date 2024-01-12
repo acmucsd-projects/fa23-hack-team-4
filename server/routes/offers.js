@@ -9,6 +9,6 @@ router.post('/', offer_controller.offer_create);
 
 router.get('/:id', offer_controller.offer_get);
 
-router.put('/:id', offer_controller.offer_put);
+router.post('/:id', offer_controller.offer_put);
 
 module.exports = router;

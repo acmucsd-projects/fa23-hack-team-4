@@ -2,18 +2,107 @@
   display: flex;
 }
 
-  .postInfo {
-    width: 45vw;
-    padding: 2vw;
+  .imageSlide {
+    width: 55vw;
+    padding: 6vh 2.5vw 0vh;
   }
 
-    .postInfo h1 {
+    .imageDisplay {
+      display: flex;
+      justify-content: center;
+
+      padding: 0vh 4vw;
+    }
+
+      .currImage {
+        max-width: 42vw; 
+        max-height: 42vh;
+      }
+
+    .imageNav {
+      position: relative;
+      bottom: 25vh;
+    }
+
+      .nav {
+        border: none;
+        border-radius: 15px;
+        width: 3vw;
+        padding: 1vw;
+
+        background-color: rgba(114, 122, 122, 0.7);
+        color: white;
+        font-size: 1vw;
+      }
+
+      .nav:hover {
+        opacity: 0.75;
+      }
+
+        .left {
+          margin-right: 22vw;
+        }
+
+        .right {
+          margin-left: 22vw;
+        }
+
+    .imgIndicator {
+      display: flex;
+      justify-content: center;
+
+      width: 100%;
+      overflow: hidden;
+    }
+
+      .imagePreview {
+        max-width: 7vw; 
+        margin-right: 1vw;
+        margin-top: 1vh;
+        margin-bottom: 1vh;
+        height: auto;
+      }
+
+        .selected {
+          opacity: 1; 
+        }
+
+        .notSelected {
+          opacity: 0.5;
+          cursor: pointer; 
+        }
+
+          .notSelected:hover {
+            opacity: 0.8;
+          }
+  
+  .postInfo {
+    width: 45vw;
+    padding: 1.25vw 3vw 0.75vw 1vw;
+  }
+
+    .title h1 {
       font-size: 2.5vw;
       font-weight: 400;
       margin-top: 2vh;
     }
 
-    .postInfo h2 {
+    .title a {
+      position: absolute;
+      bottom: 0vh;
+      right: 0vw;
+      padding: 0.75vw;
+  
+      border: 1px solid var(--yellow);
+      border-radius: 10px;
+      background-color: var(--gold);
+      
+      font-size: 1.3vw;
+      color: whitesmoke;
+      text-decoration: none;
+    }
+
+    .postBody h2 {
       font-size: 1.5vw;
       font-weight: 500;
       margin-top: 2vh;
@@ -21,82 +110,7 @@
       margin-left: 1vw;
     }
 
-    .postInfo h3 {
-      font-size: 1.25vw;
-      font-weight: 300;
-      margin: 1vw;
-    }
-
-  .imageSlide {
-    width: 55vw;
-    padding: 6vh 2.5vw 0vh;
-  }
-
-  .imageDisplay {
-    display: flex;
-    justify-content: center;
-
-    padding: 0vh 4vw;
-  }
-
-    .currImage {
-      max-width: 42vw; 
-      max-height: 42vh;
-    }
-
-  .imageNav {
-    position: relative;
-    bottom: 25vh;
-  }
-
-    .nav {
-      border: none;
-      border-radius: 15px;
-      width: 3vw;
-      padding: 1vw;
-
-      background-color: rgba(114, 122, 122, 0.7);
-      color: white;
-      font-size: 1vw;
-    }
-
-    .nav:hover {
-      opacity: 0.75;
-    }
-
-      .left {
-        margin-right: 22vw;
-      }
-
-      .right {
-        margin-left: 22vw;
-      }
-
-  .imgIndicator {
-    display: flex;
-    justify-content: center;
-
-    width: 100%;
-    overflow: hidden;
-  }
-
-  .imagePreview {
-    max-width: 7vw; 
-    margin-right: 1vw;
-    margin-top: 1vh;
-    margin-bottom: 1vh;
-    height: auto;
-  }
-
-    .selected {
-      opacity: 1; 
-    }
-
-    .notSelected {
-      opacity: 0.5;
-      cursor: pointer; 
-    }
-
+<<<<<<< HEAD
       .notSelected:hover {
         opacity: 0.8;
       }
@@ -163,3 +177,21 @@
 
 
   
+=======
+    .postBody h3 {
+      font-size: 1.25vw;
+      font-weight: 300;
+      margin: 1vw;
+    }
+    
+    .offers .offerOption {
+      padding: 0.45vw;
+
+      border: 1px solid var(--yellow);
+      border-radius: 5px;
+      background-color: var(--gold);
+      
+      font-size: 1.25vw;
+      color: whitesmoke;
+    }
+>>>>>>> 4ac5fb5f69dae0651ec7aa342c23846a13ae3dab

@@ -6,6 +6,7 @@ const dotenv = require('dotenv');
 const passport = require('passport')
 const session = require('express-session');
 const GoogleStrategy = require('passport-google-oauth2').Strategy;
+const cors = require('cors')
 
 const User = require('./models/user');
 
@@ -14,7 +15,7 @@ dotenv.config();
 passport.use(new GoogleStrategy({
     clientID: process.env.GOOGLE_CLIENT_ID,
     clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-    callbackURL: "http://localhost:5000/auth/google/callback",
+    callbackURL: "http://localhost:" + process.env.PORT + "/auth/google/callback",
     passReqToCallback: true,
     saveUninitialized: true,
     hd: 'ucsd.edu'
@@ -26,17 +27,17 @@ passport.use(new GoogleStrategy({
     const indexOfSplit = email.indexOf('@');
     const username = email.substring(0, indexOfSplit);
     
-    if(userInfo.hd !== 'ucsd.edu') done(new Error("Email must come from the domain: ucsd.edu"))
+    if(userInfo.hd !== 'ucsd.edu') return done(new Error("Email must come from the domain: ucsd.edu"))
     else {
-      const user = await User.findOne({ username }, (err, user) => done(err, user));
-      const newUser = User({name, username, email, is_verified: true});
-      newUser.save((err) => {
-          if(err) return err;
-          return done(err, user);
-      });
+      const user = await User.findOne({ username }, (err, user) => {if(user) return done(err, user)});
+      if(!user) {
+        const newUser = User({name, username, email, is_verified: true});
+        newUser.save((err) => {
+            return done(err, newUser);
+        });
+      }
     }
-  }
-));
+}));
 
 passport.serializeUser((user, done) => {
   done(null, user)
@@ -48,7 +49,6 @@ passport.deserializeUser((user, done) => {
 
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
-const postsRouter = require('./routes/posts');
 const offersRouter = require('./routes/offers');
 const productsRouter = require('./routes/products');
 const authRouter = require('./routes/auth');
@@ -69,6 +69,14 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 
+const corsOptions = {
+  origin: 'http://localhost:3000',
+  methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
+  credentials: true 
+}
+
+app.use(cors(corsOptions));
+
 const unprotectedUrls = ['auth'];
 app.use((req, res, next) => {
   const urlBase = req.url.split('/')[1];
@@ -78,10 +86,10 @@ app.use((req, res, next) => {
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
-app.use('/posts', postsRouter);
 app.use('/auth', authRouter);
 app.use('/offers', offersRouter);
 app.use('/products', productsRouter);
+app.use('/uploads', express.static('uploads'));
 
 mongoose.connect(process.env.DB_URL, {
     useNewUrlParser: true,

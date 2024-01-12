@@ -3,21 +3,8 @@ const passport = require('passport')
 exports.google = passport.authenticate('google', { scope: ['email', 'profile']});
 
 exports.google_success = (req, res) => {
-  let link = req.header('Referer');
-  if(!link) {
-    try {
-      let cookieStr = req.header('Cookie');
-      let soughtString = 'next-auth.callback-url=';
-      let startIndex = cookieStr.indexOf(soughtString);
-      cookieStr = cookieStr.substring(startIndex + soughtString.length);
-      let endIndex = cookieStr.indexOf(';');
-      cookieStr = cookieStr.substring(0, endIndex);
-      link = decodeURIComponent(cookieStr);
-    }catch {
-      link = '/';
-    }
-  }
-  res.redirect(link);
+  res.redirect('http://localhost:3000/dashboard');
+  return;
 };
 
 exports.google_failure = (req, res) => {

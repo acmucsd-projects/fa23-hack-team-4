@@ -1,5 +1,5 @@
 "use client"
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import styles from './page.module.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faArrowLeft, faArrowRight } from '@fortawesome/free-solid-svg-icons'
@@ -8,6 +8,7 @@ import { faArrowLeft, faArrowRight } from '@fortawesome/free-solid-svg-icons'
 
 export default function Post() {
 
+<<<<<<< HEAD
 
     const pageView = 0; /* Viewing your own account */
     /* const pageView = 1; /* Viewing another account */
@@ -26,6 +27,25 @@ export default function Post() {
                             it works fine so thats very good :) 
                         </h3>
                     <h2>Product Information: </h2>
+=======
+    const [isUser, setIsUser] = useState(false);
+
+    return (
+        <section className = {styles.body}>
+            <ImageSlide />
+            <div className = {styles.postInfo}>
+                <div className={styles.title} style={{position: 'relative'}}>
+                    <h1> Product Name</h1>
+                    {isUser && <a className={styles.button}>Edit Listing</a>}
+                </div>
+                <div className={styles.postBody}>
+                    <h3>
+                        Product Description. This is a example description of a example product. 
+                        I want to see if the words are centered on the page correctly. Yup I think
+                        it works fine so thats very good :)
+                    </h3>
+                    <h2>Item Information:</h2>
+>>>>>>> 4ac5fb5f69dae0651ec7aa342c23846a13ae3dab
                         <h3>
                             Price: $500 
                         </h3>
@@ -33,19 +53,21 @@ export default function Post() {
                             Seller: Bob Tester
                         </h3>
                         <h3>
-                            Contact #:  (123) - 456 - 7890
-                        </h3>
-                        <h3>
                             Email:  bobexample@ucsd.edu
                         </h3>
                         <h3>
                             Posted:  01/01/2024
                         </h3>
-                    <h2>Categories: </h2>
+                    <h2>Categories:</h2>
                         <h3>
-                                #school-supply #books 
+                            #school-supply #books 
                         </h3>
+<<<<<<< HEAD
                     <CurrentOffers />
+=======
+                    <Offers isUser={isUser} />
+                </div>
+>>>>>>> 4ac5fb5f69dae0651ec7aa342c23846a13ae3dab
             </div>
         </section>
         )
@@ -194,3 +216,42 @@ function ImagePreview({images, i, setI}) {
     )
 }
 
+<<<<<<< HEAD
+=======
+function Offers(isUser){
+
+    var offers = [ 
+        {name: 'John Doe', price: 500}, 
+        {name: 'Bob Tester', price: 300}, 
+        {name: 'Alice Rabbit', price: 400}
+    ];
+
+
+    return (
+        <div className={styles.offers}>
+            <h2>Current Offers: </h2>
+            {offers.map(function(offer) {
+                return (
+                    <div style={{display: 'flex', alignItems: 'center'}}>
+                        <h3>
+                            {offer.name} &nbsp; - &nbsp; ${offer.price} &nbsp;
+                        </h3>
+                        <OfferOption isUser={isUser} />
+                    </div>
+                )
+            })}
+        </div>
+
+    )
+}
+
+function OfferOption(isUser) {
+
+    if(isUser) {
+        return <button className={styles.offerOption}>Accept Offer</button>
+    }
+
+    return <button className={stles.offerOption}>Make Offer</button>
+
+}
+>>>>>>> 4ac5fb5f69dae0651ec7aa342c23846a13ae3dab
