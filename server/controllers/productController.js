@@ -17,6 +17,7 @@ function deleteImages(product) {
 
 exports.product_list = (req, res) => {
     Product.find(handleQuery(req.query.filter))
+        .populate('seller')
         .sort(handleQuery(req.query.sort))
         .exec((err, list_product) => {
             if(err) {
@@ -48,6 +49,7 @@ exports.product_create = [
     body("product-is_on_campus", "On campus availability must be a boolean value")
         .isBoolean(),
     (req, res, next) => {
+        console.log(req.body);
         const errors = validationResult(req);
 
         if(errors.isEmpty()) {
