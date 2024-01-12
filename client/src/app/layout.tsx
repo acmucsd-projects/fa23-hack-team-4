@@ -1,7 +1,7 @@
 import './globals.css'
 import { Fraunces } from 'next/font/google'
 import React from 'react'
-import SignOutButton from './authentication/SignOutButton'
+import SignOutButton from './authentication/LogOutButton'
 import {CurrentUserBtn, GetProductsBtn, CreateProductBtn, UpdateProductBtn, DeleteProductBtn, GetOffersBtn, CreateOfferBtn, UpdateOfferBtn} from './fetch/fetchBtns'
 
 const fraunces = Fraunces({ subsets: ['latin'] })
