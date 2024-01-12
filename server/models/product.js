@@ -9,7 +9,9 @@ const productSchema = new Schema({
     seller: {type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true},
     is_available: {type: Boolean, default: true},
     categories: [String],
-    last_edited: {type: Date, default: null}
+    last_edited: {type: Date, default: null},
+    date_created: {type: Date, default: Date.now()},
+    is_on_campus: {type: Boolean, required: true}
 });
 
 productSchema

@@ -2,14 +2,28 @@ const { body, validationResult } = require("express-validator");
 const Product = require('../models/product')
 const Offer = require('../models/offer');
 const fs = require('fs');
+const {handleQuery} = require('../helpers/queryHandler');
+
+function deleteImages(product) {
+    for(let i = 0; i < product.images.length; i++) {
+        fs.unlink(product.images[i], (err) => {
+            if(err) {
+                console.log(err);
+                res.status(500).json({ error: 'Error while deleting images, unable to delete product' });
+            }
+        });
+    }
+}
 
 exports.product_list = (req, res) => {
-    Product.find({})
-        .sort({date_created: -1})
+    Product.find(handleQuery(req.query.filter))
+        .sort(handleQuery(req.query.sort))
         .exec((err, list_product) => {
-            if(err) return err;
-
-            res.json(list_product);
+            if(err) {
+                console.log(err);
+                res.status(500).json({ error: 'Internal Server Error, unable to get product' });
+            }
+            res.status(200).json(list_product);
         });
 }
 
@@ -31,6 +45,8 @@ exports.product_create = [
         .isArray()
         .optional({ nullable: true }),
     body("product-categories.*").trim().escape(),
+    body("product-is_on_campus", "On campus availability must be a boolean value")
+        .isBoolean(),
     (req, res, next) => {
         const errors = validationResult(req);
 
@@ -40,6 +56,7 @@ exports.product_create = [
                 description: req.body['product-description'],
                 price: req.body['product-price'],
                 categories: req.body['product-categories'],
+                is_on_campus: req.body['product-is_on_campus'],
                 seller: req.user,
             });
             if(req.files) {
@@ -51,7 +68,10 @@ exports.product_create = [
             }
             else res.status(400).send('At least one image needed.');
             newProduct.save((err) => {
-                if(err) console.log(err);
+                if(err) {
+                    console.log(err);
+                    res.status(500).json({ error: 'Internal Server Error, unable to save created product' });
+                }
                 res.send(newProduct.url);
             });
         }
@@ -63,7 +83,10 @@ exports.product_get = (req, res) => {
     Product.findById(req.params.id)
         .exec((err, product_result) => {
             if(product_result == null) res.status(404).json({ error: 'Product not found' });
-            else if(err) console.log(err);
+            else if(err) {
+                console.log(err);
+                res.status(500).json({ error: 'Internal Server Error, unable to get product' });
+            }
             else res.json(product_result);
         });
 }
@@ -96,6 +119,9 @@ exports.product_put = [
         .isArray()
         .optional({ nullable: true, checkFalsy: true }),
     body("product-categories.*").trim().escape(),
+    body("product-is_on_campus", "On campus availability must be a boolean value")
+        .isBoolean()
+        .optional({ nullable: true, checkFalsy: true }),
     (req, res, next) => {
         const errors = validationResult(req);
 
@@ -107,6 +133,7 @@ exports.product_put = [
                         console.log(err);
                         res.status(500).json({ error: 'Internal Server Error, unable to delete product' });
                     }
+                    else if(!product_result) res.status(404).json({error: "Product not found"})
                     else if(product_result.seller != req.user._id) res.status(403).send("Current user is not the seller of this product; product not updated")
                     else {
                         const newProduct = {}
@@ -114,7 +141,9 @@ exports.product_put = [
                         if(req.body['product-description']) newProduct.description = req.body['product-description']
                         if(req.body['product-price']) newProduct.price = req.body['product-price'];
                         if(req.body['product-categories']) newProduct.categories = req.body['product-categories'];
+                        if(req.body['product-is_on_campus']) newProduct.is_on_campus = req.body['product-is_on_campus'];
                         if(req.files) {
+                            deleteImages(product_result);
                             let path = []
                             req.files.forEach(function(files, index, arr) {
                                 path.push(files.path)
@@ -143,7 +172,7 @@ exports.product_put = [
     }
 ];
 
-//Only allow seller to delete if there's no offers yet. Instead flag as archived if there are offers present. 
+//Only allow seller to delete if there's no offers yet. 
 //If deletion is successful, also need to delete any associated images.
 exports.product_delete = async (req, res, next) => {
     try {
@@ -154,25 +183,22 @@ exports.product_delete = async (req, res, next) => {
                     console.log(err);
                     res.status(500).json({ error: 'Internal Server Error, unable to delete product' });
                 }
-                else if(product_result.seller != req.user._id) res.status(403).send("Current user is not the seller of this product; product not deleted")
-                else if(product_result.offers.length > 0) {
-                    Product.findOneAndUpdate({_id: productId}, {is_available: false});
-                    res.status(204).send("Unable to delete with offers present; product marked as unavailable");
-                }
+                else if(!product_result) res.status(404).json({error: "Product not found"})
+                else if(product_result.seller != req.user._id) res.status(403).json({error: "User is not the product's seller, unable to delete product"})
                 else {
-                    if(product_result.images) {
-                        console.log(product_result.images);
-                        for(let i = 0; i < product_result.images.length; i++) {
-                            fs.unlink(product_result.images[i], (err) => {
-                                if(err) {
-                                    console.log(err);
-                                    res.status(500).json({ error: 'Error while deleting images, unable to delete product' });
-                                }
-                            });
-                        }
-                    }
-                    Product.deleteOne({_id: productId})
-                        .then(res.status(204).send("Product successfully deleted"));
+                    Offer.find({product: product_result})
+                        .exec((err, offer_result) => {
+                            if(err) {
+                                console.log(err);
+                                res.status(500).json({ error: 'Internal Server Error, unable to delete product' });
+                            }
+                            else if(offer_result.length != 0) res.status(403).json({error: "Product already contains offers, unable to delete product."})
+                            else {
+                                if(product_result.images) deleteImages(product_result);
+                                Product.deleteOne({_id: productId})
+                                    .then(res.status(204).send("Product successfully deleted"));
+                            }
+                        });
                 }
             });
     } catch (error) {
