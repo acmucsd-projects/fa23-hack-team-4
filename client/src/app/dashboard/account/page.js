@@ -10,24 +10,24 @@ const postSize = '19vw';
 
 export default function Account() {
     
-    const [isUser, setIsUser] = useState(null);
+    const [products, setProducts] = useState(null);
     useEffect(() => {
-        const fetchUser = async () => {
-            const res = await fetch('http://localhost:5000/me', {
+        const fetchProducts = async () => {
+            const res = await fetch('http://localhost:5000/products', {
                 method: 'GET',
                 credentials: 'include',
                 headers: {
                     'accepts':'application/json'
                 }
             });
-            const userData = await res.json();
+            const product = await res.json();
             
             if(res.ok) {
-                setIsUser(true);
+                setProducts(product);
             } 
         }
 
-        fetchUser();
+        fetchProducts();
     }, []) 
 
 <<<<<<< HEAD
@@ -74,14 +74,14 @@ function AccountInfo1() {
             <AccountInfo isUser/>
             <div className={styles.posts}>
                 <LivePosts />
-                {isUser && <ArchivedPosts />}
+                {true && <ArchivedPosts />}
             </div>
         </section>
 >>>>>>> 4ac5fb5f69dae0651ec7aa342c23846a13ae3dab
     )
 }
 
-function AccountInfo(isUser) {
+function AccountInfo() {
 
     return (
         <div className={styles.accountInfo}>
@@ -91,18 +91,16 @@ function AccountInfo(isUser) {
                 <h2 className = {styles.username} >jdoe002</h2>
                 <h3 className = {styles.email} >jdoe002@ucsd.edu</h3>
             </div>
-            <CreateListing isUser/>
+            <CreateListing />
         </div>
     )
 }
 
-function CreateListing(isUser) {
+function CreateListing() {
 
-    if(isUser) {
-        return (
-            <Link href='/dashboard/createPost'>Create Listing</Link>
-        )
-    }
+    return (
+        <Link href='/dashboard/createPost'>Create Listing</Link>
+    )
 }
 
 function LivePosts() {
@@ -110,11 +108,11 @@ function LivePosts() {
         <div className={styles.postSection}>
             <h1>Live Posts</h1>
             <div className={styles.postList}>
-                <PostPreview size={postSize}/>
-                <PostPreview size={postSize}/>
-                <PostPreview size={postSize}/>
-                <PostPreview size={postSize}/>
-                <PostPreview size={postSize}/>
+                <PostPreview size={postSize} name='Example' price=' Free' seller='Myself'/>
+                <PostPreview size={postSize} name='Example' price=' Free' seller='Myself'/>
+                <PostPreview size={postSize} name='Example' price=' Free' seller='Myself'/>
+                <PostPreview size={postSize} name='Example' price=' Free' seller='Myself'/>
+                <PostPreview size={postSize} name='Example' price=' Free' seller='Myself'/>
             </div>
         </div>
 
@@ -126,11 +124,11 @@ function ArchivedPosts() {
         <div className={styles.postSection}>
             <h1>Archived Posts</h1>
             <div className={styles.postList}>
-                <PostPreview size={postSize}/>
-                <PostPreview size={postSize}/>
-                <PostPreview size={postSize}/>
-                <PostPreview size={postSize}/>
-                <PostPreview size={postSize}/>
+            <PostPreview size={postSize} name='Example' price=' Free' seller='Myself'/>
+                <PostPreview size={postSize} name='Example' price=' Free' seller='Myself'/>
+                <PostPreview size={postSize} name='Example' price=' Free' seller='Myself'/>
+                <PostPreview size={postSize} name='Example' price=' Free' seller='Myself'/>
+                <PostPreview size={postSize} name='Example' price=' Free' seller='Myself'/>
             </div>
         </div>
 
