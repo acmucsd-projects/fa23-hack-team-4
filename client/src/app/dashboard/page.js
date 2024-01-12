@@ -1,5 +1,5 @@
 'use client'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons'
@@ -7,6 +7,7 @@ import styles from './page.module.css'
 import Sidebar from './components/sidebar/sidebar.js'
 import Category from './components/categoryBar/categoryBar.js'
 import PostPreview from './components/postPreview/postPreview.js'
+import Link from 'next/link'
 
 
 export default function Dashboard() {
@@ -17,6 +18,27 @@ export default function Dashboard() {
         e.stopPropagation()
         setIsSearch(true)
     }
+
+
+    const [products, setProducts] = useState(null);
+    useEffect(() => {
+        const fetchProducts = async () => {
+            const res = await fetch('http://localhost:5000/products', {
+                method: 'GET',
+                credentials: 'include',
+                headers: {
+                    'accepts':'application/json'
+                }
+            });
+            const product = await res.json();
+            
+            if(res.ok) {
+                setProducts(product);
+            } 
+        }
+
+        fetchProducts();
+    }, []) 
 
     const postSize = '21vw'
 
@@ -65,10 +87,17 @@ export default function Dashboard() {
                         </motion.div>
                     </motion.div>
                     <div className={styles.postPreviews}>
-                        <PostPreview size={postSize}/>
-                        <PostPreview size={postSize}/>
-                        <PostPreview size={postSize}/>
-                        <PostPreview size={postSize}/>
+                        {products && products.map((product) => (
+                            <Link href={'/dashboard/post'} style={{textDecoration: 'none', color: 'black'}}>
+                                <PostPreview 
+                                    size={postSize} 
+                                    key={product._id}
+                                    name={product.name}
+                                    price={product.price}
+                                    seller={product.seller}
+                                />
+                            </Link>
+                        ))}
                     </div>
                 </div>
             </div>
