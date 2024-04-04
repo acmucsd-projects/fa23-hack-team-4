@@ -8,26 +8,6 @@ import { faArrowLeft, faArrowRight } from '@fortawesome/free-solid-svg-icons'
 
 export default function Post() {
 
-<<<<<<< HEAD
-
-    const pageView = 0; /* Viewing your own account */
-    /* const pageView = 1; /* Viewing another account */
-
-    if(pageView == 0) {
-        return (
-            <section className = {styles.body}>
-            <ImageSlide />
-            <div className = {styles.postInfo}>
-                <a className={styles.button2} href = '/dashboard/editPost'>Edit Post</a>
-                <h1> Product Name</h1>
-                    <h2>Seller's Description:</h2>
-                        <h3>
-                            Product Description. This is a example description of a example product. 
-                            I want to see if the words are centered on the page correctly. Yup I think
-                            it works fine so thats very good :) 
-                        </h3>
-                    <h2>Product Information: </h2>
-=======
     const [isUser, setIsUser] = useState(false);
 
     return (
@@ -45,7 +25,6 @@ export default function Post() {
                         it works fine so thats very good :)
                     </h3>
                     <h2>Item Information:</h2>
->>>>>>> 4ac5fb5f69dae0651ec7aa342c23846a13ae3dab
                         <h3>
                             Price: $500 
                         </h3>
@@ -62,104 +41,12 @@ export default function Post() {
                         <h3>
                             #school-supply #books 
                         </h3>
-<<<<<<< HEAD
-                    <CurrentOffers />
-=======
                     <Offers isUser={isUser} />
                 </div>
->>>>>>> 4ac5fb5f69dae0651ec7aa342c23846a13ae3dab
             </div>
         </section>
-        )
-    }
-
-    if(pageView == 1) {
-        return (
-            <section className = {styles.body}>
-            <ImageSlide />
-            <div className = {styles.postInfo}>
-                <h1> Product Name</h1>
-                    <h2>Seller's Description:</h2>
-                        <h3>
-                            Product Description. This is a example description of a example product. 
-                            I want to see if the words are centered on the page correctly. Yup I think
-                            it works fine so thats very good :) 
-                        </h3>
-                    <h2>Product Information: </h2>
-                        <h3>
-                            Price: $500 
-                        </h3>
-                        <h3>
-                            Seller: Bob Tester
-                        </h3>
-                        <h3>
-                            Contact #:  (123) - 456 - 7890
-                        </h3>
-                        <h3>
-                            Email:  bobexample@ucsd.edu
-                        </h3>
-                        <h3>
-                            Posted:  01/01/2024
-                        </h3>
-                    <h2>Categories: </h2>
-                        <h3>
-                                #school-supply #books 
-                        </h3>
-                    <CurrentOffers />
-            </div>
-        </section>
-
-        )
-    }
-
-
-}
-
-
-function CurrentOffers(){
-
-    var people = [ 
-        {name: 'John Doe', price: 500}, 
-        {name: 'Bob Tester', price: 300}, 
-        {name: 'Alice Rabbit', price: 400}
-    ];
-    
-
-    return (
-        <div>
-            <h2>Current Offers: </h2>
-            <h3>
-                <CurrentPeople people1 = {people} />
-            </h3>
-        </div>
-
     )
 }
-
-
-
-function CurrentPeople({people1}) {
-    return (
-      <>
-        {people1.map(function(people) {
-            return (
-                <div>
-                    <h3>{people.name} &nbsp;- &nbsp; ${people.price} {<AcceptOffer />}</h3>
-                </div>
-            )
-        })}
-      </>
-    )
-}
-
-
-function AcceptOffer(){
-    return(
-        <button className={styles.button3}>Accept Offer</button>
-    )
-
-}
-
 
 
 function ImageSlide(){
@@ -216,8 +103,6 @@ function ImagePreview({images, i, setI}) {
     )
 }
 
-<<<<<<< HEAD
-=======
 function Offers(isUser){
 
     var offers = [ 
@@ -254,4 +139,3 @@ function OfferOption(isUser) {
     return <button className={stles.offerOption}>Make Offer</button>
 
 }
->>>>>>> 4ac5fb5f69dae0651ec7aa342c23846a13ae3dab
